@@ -1,0 +1,488 @@
+/*
+     Filename: index.css
+
+     Author: Xin Huang
+     Date: 10/13/2017
+ */
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    max-width: 1250px;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    background-color: #eff1f4;
+    border: thin solid grey;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    font-weight: bold;
+}
+
+/* header */
+.page-head {
+    background: #4250f4;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+}
+
+.logo1 {
+    margin: 0;
+    box-sizing: border-box;
+    float: left;
+    padding-top: 16px;
+    display: inline-flex;
+}
+
+.page-head h1 {
+    height: 81px;
+    line-height: 100px;
+    color: white;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: left;
+    padding-left: 150px;
+    overflow: hidden;
+}
+
+.page-head nav {
+    width: 100%;
+    height: 33px;
+    margin-top: 5px;
+    line-height: 30px;
+    padding-top: 4px;
+    background-color: black;
+}
+
+nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    float: right;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+nav a:hover {
+    background-color: green;
+    color: white;
+}
+
+/* main containers */
+.container {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.content {
+    width: 100%;
+    max-width: 1010px;
+    margin: 0;
+    padding: 0 5px 5px 18px;
+    float: right;
+    background-color: white;
+    border-left: thin solid #A5D6F9;
+    border-bottom: thin solid #A5D6F9;
+}
+
+/* navigation bar */
+.navigation {
+    width: 100%;
+    max-width: 150px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    border-top: none;
+}
+
+.portal {
+    width: 100%;
+    padding: 15px;
+    background: url(../media/nav-border.png) no-repeat top left;
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* align horizontal */
+}
+
+.left-column {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin-right:  10px;
+    width: 68%;
+}
+
+/* styles for single cells */
+.single-cell {
+    border-radius: 10px;
+    max-width: 670px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+.single-cell h3 {
+    text-align: center;
+    margin: 5px 0;
+}
+
+#journey {
+    border: thick solid #CB8126;
+    color: #CB8126;
+    border-radius: 10px;
+}
+
+#journey-title {
+    background-color: #FDAD89;
+    border: thin solid white;
+    border-radius: 10px;
+}
+
+iframe {
+    margin: 2px 2px;
+}
+
+#recent-news {
+    border: thick solid #789C34;
+    color: #789C34;
+
+}
+
+#recent-news li {
+    font-style: italic;
+    color: black;
+}
+
+#recent-news-title {
+    background-color: #C2DD8B;
+    border: thin solid white;
+    border-radius: 10px;
+}
+
+#recent-news-body {
+    margin: 2px;
+    background-color: #F1F7E4;
+    border: thin solid #789C34;
+    border-radius: 10px;
+}
+
+#recent-animations {
+    border: thick solid #109FCB;
+    color: #109FCB;
+
+}
+
+#recent-animations li {
+    font-style: italic;
+    color: black;
+}
+
+#recent-animations-title {
+    background-color: #76DCFA;
+    border: thin solid #76DCFA;
+    border-radius: 10px;
+}
+
+#recent-animations-body {
+    margin: 2px;
+    background-color: #E8F9FE;
+    border: thin solid #789C34;
+    border-radius: 10px;
+}
+
+#recent-gifts {
+    border: thick solid #CF0037;
+    color: #CF0037;
+}
+
+#recent-gifts-title {
+    background-color: #FF6E91;
+    border: thin solid white;
+    border-radius: 10px;
+}
+
+#recent-gifts-body {
+    margin: 2px;
+    background-color: #FFCFDB;
+    border: thin solid #FF6E91;
+    border-radius: 10px;
+}
+
+#deliver-gifts {
+    border-collapse: collapse;
+    margin: 30px auto;
+}
+
+thead {
+    background-color: black;
+    color: white;
+}
+
+th, td {
+    font-style: italic;
+    font-weight: bold;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.gift-pokemon {
+    width: 45px;
+    height: 45px;
+}
+
+.right-column {
+    border: 3px solid #26A3E0;
+    width: 30%;
+    float: right;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+#right-column-title {
+    background-color: #89D7FB;
+    border: 3px solid white;
+    border-radius: 10px 10px 0 0;
+    height:  50px;
+}
+
+#right-column-title h2 {
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    margin-top: 10px;
+}
+
+.pic-generation1 {
+    width: 75%;
+    margin-top: 10px;
+}
+
+.pic-pokedex {
+    width:  145px;
+    height: 100px;
+}
+
+#pokedex {
+    color: #DDBA62;
+}
+
+#pokedex-body{
+    margin: 0 2px;
+    background-color: #565656;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#pokedex-title{
+    margin: 2px;
+    background-color: #565656;
+    border-radius: 0 0 10px 10px;
+}
+
+.pokedex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* align horizontal */
+}
+
+#pokedex1 {
+    color: #B72A6C;
+}
+
+#pokedex1-body{
+    margin: 0 2px;
+    background-color: #E988AC;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#pokedex1-title{
+    margin: 2px;
+    background-color: #E988AC;
+    border-radius: 0 0 10px 10px;
+}
+
+#pokedex2 {
+    color: rgb(209, 161, 38);
+}
+
+#pokedex2-body{
+    margin: 0 2px;
+    background-color: #FAE242;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#pokedex2-title{
+    margin: 2px;
+    background-color: #FAE242;
+    border-radius: 0 0 10px 10px;
+}
+
+#pokedex3 {
+    color: rgb(13, 134, 30);
+}
+
+#pokedex3-body{
+    margin: 0 2px;
+    background-color: #1EDC3C;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#pokedex3-title{
+    margin: 2px;
+    background-color: #1EDC3C;
+    border-radius: 0 0 10px 10px;
+}
+
+#pokedex4 {
+    color: rgb(15, 110, 161);
+}
+
+#pokedex4-body{
+    margin: 0 2px;
+    background-color: #53A5D2;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#pokedex4-title{
+    margin: 2px;
+    background-color: #53A5D2;
+    border-radius: 0 0 10px 10px;
+}
+
+#pokedex5 {
+    color: rgb(182, 107, 123);
+}
+
+#pokedex5-body{
+    margin: 0 2px;
+    background-color: #F4BFBA;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#pokedex5-title{
+    margin: 2px;
+    background-color: #F4BFBA;
+    border-radius: 0 0 10px 10px;
+}
+
+#pokedex6 {
+    color: rgb(124, 114, 111);
+}
+
+#pokedex6-body{
+    margin: 0 2px;
+    background-color: #E0E5E5;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#pokedex6-title{
+    margin: 2px;
+    background-color: #E0E5E5;
+    border-radius: 0 0 10px 10px;
+}
+
+#pokedex7 {
+    color: #26A3E0;
+}
+
+#pokedex7-body{
+    margin: 0 2px;
+    background-color: #89D7FB;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#pokedex7-title{
+    margin: 2px;
+    background-color: #89D7FB;
+    border-radius: 0 0 10px 10px;
+}
+
+#all-gift-pokemon {
+    color: white;
+}
+
+#all-gift-pokemon-body{
+    margin: 0 2px;
+    background-color: #FF6464;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#all-gift-pokemon-title{
+    margin: 2px;
+    background-color: #FF6464;
+    border-radius: 0 0 10px 10px;
+}
+
+.games-wall {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    padding: 20px;
+}
+
+.game-cover {
+    width: 30%;
+    height: 30%;
+}
+
+.info {
+    padding: 0 68px;
+    text-align: justify;
+}
+/* footer section */
+footer {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+}
+
+footer p {
+    display: block;
+    text-align: center;
+    color: black;
+    height: 12px;
+    margin: 0;
+    padding-top: 8px;
+    font-size: 12px;
+}
+
+/* Add media query support*/
+@media screen and (max-width: 800px) {
+    .right-column {width: 68%;}
+    .pokedex-container {width: 100%;}
+    .content {width: 99%;}
+    body {
+        border: 0; 
+        margin: 0;
+    }
+}

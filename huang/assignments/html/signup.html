@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pokemon Wiki</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../css/signup.css">
+</head>
+
+<body>
+<header class="page-head">
+    <a href="../index.html">
+        <img class="logo1" src="../media/Wiki-wordmark.png" alt="wiki logo" title=""/>
+    </a>
+    <h1>Pokémon Wikipedia</h1>
+    <nav>
+        <a href="./contactus.html">
+            <b>Contact Us</b>
+        </a>
+        <a href="./login.html">
+            <b>Log In</b>
+        </a>
+        <a href="./signup.html">
+            <b>Sign Up</b>
+        </a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="navigation">
+        <div class="portal">
+            <h3>Main Navigation</h3>
+            <ul>
+                <li>
+                    <a href="../index.html">
+                        Main Page
+                    </a>
+                </li>
+                <li>
+                    <a href="./faqs.html">
+                        <b>FAQs</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="./games.html">
+                        What's New
+                    </a>
+                </li>
+                <li>
+                    <a href="./aboutus.html">
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="./customerservice.html">
+                        Customer Service
+                    </a>
+                </li>
+                <li>
+                    <a href="./gameInfo.html">
+                        Game Information
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="portal">
+            <h3>Quick Link</h3>
+            <ul>
+                <li>
+                    <a href="../index.html#journey">
+                        Journey
+                    </a>
+                </li>
+                <li>
+                    <a href="../index.html#recent-news">
+                        News
+                    </a>
+                </li>
+                <li>
+                    <a href="../index.html#recent-animations">Animations</a>
+                </li>
+                <li>
+                    <a href="../index.html#recent-gifts">Recent Gifts</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Create Your Account</h2>
+        <form>
+            <fieldset id="personal-info">
+                <label class="required">
+                    <p>Name</p>
+                    <div class="required">
+                        <input type="text" name="fname" placeholder="First Name" required>
+                        <input type="text" name="lname" placeholder="Last Name" required>
+                    </div>
+                </label>
+
+                <label class="required">
+                    <p>Birthday</p>
+                    <input type="date" id="startdate" name="startdate" required>
+                </label>
+
+                <label for="email" class="required">
+                    <p>Email</p>
+                    <input type="email" id="email" name="email" required>
+                </label>
+
+                <label class="required">
+                    <p>
+                        <br>Favorite Pokemon Game?</p>
+                    <select name="position" required>
+                        <option>Pokémon Red/Blue/Green/Yellow Version</option>
+                        <option>Pokémon Golden/Silver Version</option>
+                        <option>Pokémon Ruby/Sapphire Version</option>
+                        <option>Pokémon Diamond/Pearl Version</option>
+                        <option>Pokémon Black/White Version</option>
+                        <option>Pokémon X/Y Version</option>
+                        <option>Pokémon Sun/Moon Version</option>
+                    </select>
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <div class="region">
+                    <p>Region</p>
+                    <label for="north-america">
+                        <input type="radio" name="region" id="north-america" value="north-america" checked> North
+                        America
+                    </label>
+                    <label for="japan">
+                        <input type="radio" name="region" id="japan" value="japan"> Japan
+                    </label>
+                    <label for="europe">
+                        <input type="radio" name="region" id="europe" value="europe"> Europe
+                    </label>
+                    <label for="other">
+                        <input type="radio" name="region" id="other" value="other"> Other
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <label class="required">
+                    <p>User Name</p>
+                    <div>
+                        <input type="text" required>
+                    </div>
+                </label>
+
+                <label class="required">
+                    <p>Password</p>
+                    <div>
+                        <input type="password" required>
+                    </div>
+                </label>
+            </fieldset>
+            <fieldset class="submitbutton">
+                <input type="submit" id="submit" value="Create Your Account">
+            </fieldset>
+        </form>
+    </div>
+</div>
+<footer>
+    <p>
+        <b>Posted by: </b>Xin Huang</p>
+    <p>
+        <b>Contact information: </b>
+        <a href="mailto:huangxin1657@students.itu.edu">huangxin1657@students.itu.edu</a>
+    </p>
+</footer>
+
+</body>
+
+
+</html>
