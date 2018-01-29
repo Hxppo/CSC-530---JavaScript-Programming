@@ -62,6 +62,11 @@
                         Game Information
                     </a>
                 </li>
+                <li>
+                    <a href="./movies.html">
+                        Pokemon Movies
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -90,7 +95,7 @@
 
     <div class="content">
         <script type="text/javascript">
-            function game(img, description) {
+            function Game(img, description) {
                 this.img = "../media/" + img + ".png";
                 this.description = description;
 
@@ -101,12 +106,12 @@
             }
 
             function createGameFor1() {
-                var newGame = new game("Game1", "This is the 1st generation of Pokemon game \n Name: Pokemon Red");
+                var newGame = new Game("Game1", "This is the 1st generation of Pokemon game \n Name: Pokemon Red");
                 newGame.display();
             }
 
             function createGameFor2() {
-                var newGame = new game("Game1", "This is the 2nd generation of Pokemon game \n Name: Pokemon Green");
+                var newGame = new Game("Game1", "This is the 2nd generation of Pokemon game \n Name: Pokemon Green");
                 newGame.display();
             }
 

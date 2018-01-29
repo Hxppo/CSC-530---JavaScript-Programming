@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Labs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        body {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header {
+            color: black;
+            text-align: center;
+            background: lightgreen;
+            border: 1px solid black;
+            margin-bottom: 5px;
+            max-width: 1200px;
+        }
+
+        #container {
+            color: white;
+            max-width: 1200px;
+            width: 100%;
+            background-size: cover;
+            padding: 15px 0 15px 0;
+            background-color: black;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #container p {
+            font-size: 15px;
+            color: yellow;
+            font-weight: bold;
+        }
+
+        #container h2 {
+            color: red;
+            text-align: center;
+        }
+
+        h3 {
+            color: wheat;
+            text-align: center;
+        }
+
+        .movie-block {
+            border-radius: 10px;
+            max-width: 300px;
+            border: 1px solid lightgrey;
+        }
+
+        .movie-wall {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center; /* align horizontal */
+            align-items: center; /* align vertical */
+            max-width: 1200px;
+            max-height: 650px;
+        }
+
+        article {
+            margin-bottom: 50px;
+            float: left;
+            width: 200px;
+        }
+
+        .movie-img {
+            width: 30%;
+            height: 30%;
+            float: left;
+        }
+
+        footer {
+            margin-top: 5px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        footer p {
+            display: block;
+            text-align: center;
+            color: black;
+            height: 12px;
+            margin: 0;
+            padding-top: 8px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Lab 7: Loops</h1>
+</header>
+
+<div id="container">
+    <script type="text/javascript">
+        function Movie (title, genre, rating, price, img) {
+            this.genre = genre;
+            this.title = title;
+            this.rating = rating;
+            this.price = price;
+            this.img = img;
+
+            this.show = function () {
+                document.write('<div class="movie-block"><article>');
+                document.write("<p>" + "Title: " + this.title + "</p>");
+                document.write("<p>" + "Genre: " + this.genre + "</p>");
+                document.write("<p>" + "Rating: " + this.rating + "/10</p>");
+                document.write("<p>" + "Price: $" + this.price + "</p></article>");
+                document.write('<img class="movie-img" src=' + '"' + this.img + '" />');
+                document.write("</div>");
+            };
+        }
+
+        inventory = [];
+
+        var comedy = [];
+        var movieObj = new Movie("Minions", "comedy", 6.4, 10,
+            "http://t2.gstatic.com/images?q=tbn:ANd9GcRbHFoQWQZLymKtwzfjVEvfNDOIdcWOL-tUFstMC00m5OMf961D");
+        comedy.push(movieObj);
+        movieObj = new Movie("JTed 2", "comedy", 6.3, 12.5,
+            "http://t3.gstatic.com/images?q=tbn:ANd9GcSdyBLpMOpQNRmHVYBa3N1XanSp0K_RRkbJes7fOpQ78coBtYEQ");
+        comedy.push(movieObj);
+        movieObj = new Movie("The Intern", "comedy", 7.1, 10,
+            "http://t2.gstatic.com/images?q=tbn:ANd9GcROWGcHkJn5rNAN99F9KNcmH321X-lTLxC-wtRycBqcK_7oovxd");
+        comedy.push(movieObj);
+        inventory.push(comedy);
+
+        var action = [];
+        movieObj = new Movie("Terminator Genisys", "action", 6.5, 12,
+            "http://t3.gstatic.com/images?q=tbn:ANd9GcToT_BFrHTP-ivud58j1X8mNRxpwSdJpDM6rGUMjySDpzQr7_pg");
+        action.push(movieObj);
+        movieObj = new Movie("Jurassic World", "action", 7, 13.5,
+            "http://t1.gstatic.com/images?q=tbn:ANd9GcT9t_mvZu0k-wS_QqvQmPKc6FMkwJoj0HgUjwLJK7uGG_NtZBxV");
+        action.push(movieObj);
+        movieObj = new Movie("Edge of Tomorrow", "action", 7.9, 11,
+            "http://t1.gstatic.com/images?q=tbn:ANd9GcQxMJgknFpnvAXSdXOlU1gi0gDS7KClMOpt6uoGtaTRRJ0AIa5p");
+        action.push(movieObj);
+        inventory.push(action);
+
+        var drama = [];
+        movieObj = new Movie("Concussion", "drama", 7.1, 15,
+            "http://t0.gstatic.com/images?q=tbn:ANd9GcQNcKK3F0CNa4D2APk5shk73A_Jym89iZzlosXbCFtCpC9tVSaf");
+        drama.push(movieObj);
+        movieObj = new Movie("True Story", "drama", 6.3, 14.5,
+            "http://t1.gstatic.com/images?q=tbn:ANd9GcTLaTvSMb5wz68JGQQnCewDmNu6bcSyr3MGi8jALy6NeurrpwQT");
+        drama.push(movieObj);
+        movieObj = new Movie("Southpaw", "drama", 7.4, 11,
+            "http://t2.gstatic.com/images?q=tbn:ANd9GcRfQeednBBgM4rM64r-rpCKFfchryS_ULEvaiEHOxQxEpQ_00oz");
+        drama.push(movieObj);
+        inventory.push(drama);
+    </script>
+
+    <h2>Movie Inventory</h2>
+    <div class="movie-wall">
+        <script type="text/javascript">
+            var genres = ["comedy", "action", "drama"];
+            inventory.forEach(function (genre, index) {
+                document.write("<h4>" + genres[index] + "</h4>");
+                genre.forEach(function (movie) {
+                    movie.show();
+                });
+            });
+        </script>
+    </div>
+
+</div>
+
+<footer>
+    <p><b>Posted by: </b>Xin Huang</p>
+    <p>
+        <b>Contact information: </b>
+        <a href="mailto:huangxin1657@students.itu.edu">huangxin1657@students.itu.edu</a>
+    </p>
+</footer>
+</body>
+
+</html>

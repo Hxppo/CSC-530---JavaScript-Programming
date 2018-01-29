@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Labs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        body {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        header {
+            color: black;
+            text-align: center;
+            background: lightgreen;
+            border: 1px solid black;
+            margin-bottom: 5px;
+        }
+
+        #container {
+            color: white;
+            max-width: 800px;
+            width: 100%;
+            background-size: cover;
+            padding: 15px 0 15px 0;
+            background-color: black;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #container p {
+            font-size: 15px;
+            color: yellow;
+            font-weight: bold;
+        }
+
+        #container h2 {
+            color: red;
+            text-align: center;
+        }
+
+        h3 {
+            color: wheat;
+            text-align: center;
+        }
+
+        .movie-block {
+            border-radius: 10px;
+            max-width: 670px;
+            display: flex;
+            flex-direction: row;
+            margin: 65px;
+            border: 1px solid lightgrey;
+        }
+
+        article {
+            margin-bottom: 50px;
+            float: left;
+            width: 200px;
+        }
+
+        .movie-img {
+            width: 30%;
+            height: 30%;
+            float: left;
+        }
+
+        footer {
+            margin-top: 5px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        footer p {
+            display: block;
+            text-align: center;
+            color: black;
+            height: 12px;
+            margin: 0;
+            padding-top: 8px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Lab 6: Arrays </h1>
+</header>
+
+
+<div id="container">
+    <script type="text/javascript">
+        function Movie (title, genre, rating, price, img) {
+            this.genre = genre;
+            this.title = title;
+            this.rating = rating;
+            this.price = price;
+            this.img = img;
+
+            this.show = function () {
+                document.write('<div class="movie-block"><article>');
+                document.write("<p>" + "Title: " + this.title + "</p>");
+                document.write("<p>" + "Genre: " + this.genre + "</p>");
+                document.write("<p>" + "Rating: " + this.rating + "/10</p>");
+                document.write("<p>" + "Price: $" + this.price + "</p></article>");
+                document.write('<img class="movie-img" src=' + '"' + this.img + '" />');
+                document.write("</div>");
+            };
+        }
+    </script>
+
+    <h2>Movie Inventory</h2>
+    <script type="text/javascript">
+        var inventory = [];
+        // create movie objects
+        var movieObj = new Movie("Coco", "Fantasy/Mystery", 8.7, 15,
+            "http://t3.gstatic.com/images?q=tbn:ANd9GcS3FGIsangc2iauB89mttkiBAvIDj_O952Ypk2p5QqABby--L6d");
+        inventory.push(movieObj);
+
+        movieObj = new Movie("Jumanji: Welcome to the Jungle", "Fantasy/Action", 7.2, 12.5,
+            "http://t2.gstatic.com/images?q=tbn:ANd9GcSGLiKxLm4FSbjNzysaI8xVoUEE27RDObZg9pSiP28nvSEwy7Mb");
+        inventory.push(movieObj);
+
+        movieObj = new Movie("Maze Runner: The Death Cure", "Fantasy/Science fiction", 7.2, 10,
+            "http://t2.gstatic.com/images?q=tbn:ANd9GcRd7cncB4SPDn-yJhrwMJkEvxYHYLRjgQtJXZf5Wl2jTn0HTNgg");
+        inventory.push(movieObj);
+    </script>
+
+    <div>
+        <h3>Number of movies in the inventory: 3</h3>
+        <script type="text/javascript">
+            inventory.forEach(function (m) {
+                m.show();
+            });
+        </script>
+    </div>
+
+    <div>
+        <h3>Pop and display the popped movie.</h3>
+        <script type="text/javascript">
+            firstPopedMovie = inventory.pop();
+            firstPopedMovie.show();
+        </script>
+    </div>
+
+    <div>
+        <h3>Number of movies in the inventory: 2</h3>
+        <h3>Pop another one and display the popped movie.</h3>
+        <script type="text/javascript">
+            lastMoive = inventory.pop();
+            lastMoive.show();
+        </script>
+    </div>
+
+    <div>
+        <h3>Number of movies in the inventory: 1</h3>
+        <h3>Unshift the last popped movie and display the inventory.</h3>
+        <script type="text/javascript">
+            inventory.unshift(lastMoive);
+            inventory.forEach(function (value) {
+                value.show();
+            });
+        </script>
+    </div>
+
+    <div>
+        <h3>Do another pop and display the popped movie.</h3>
+        <script type="text/javascript">
+            inventory.pop().show();
+        </script>
+    </div>
+
+    <div>
+        <h3>Number of movies in the inventory: 1</h3>
+        <h3>Display the inventory.</h3>
+        <script type="text/javascript">
+            inventory.forEach(function (value) {
+                value.show();
+            });
+        </script>
+    </div>
+
+    <div>
+        <h3>Push the first popped and display the inventory.</h3>
+        <h3>Number of movies in the inventory: 2</h3>
+        <script type="text/javascript">
+            inventory.push(firstPopedMovie);
+            inventory.forEach(function (value) {
+                value.show();
+            });
+        </script>
+    </div>
+
+    <div>
+        <h3>Shift and display the shifted movie.</h3>
+        <script type="text/javascript">
+            shifftedMoive = inventory.shift();
+            shifftedMoive.show();
+        </script>
+    </div>
+
+    <div>
+        <h3>Number of movies in the inventory: 1</h3>
+        <h3>Display the inventory.</h3>
+        <script type="text/javascript">
+            inventory.forEach(function (value) {
+                value.show();
+            });
+        </script>
+    </div>
+</div>
+
+<footer>
+    <p><b>Posted by: </b>Xin Huang</p>
+    <p>
+        <b>Contact information: </b>
+        <a href="mailto:huangxin1657@students.itu.edu">huangxin1657@students.itu.edu</a>
+    </p>
+</footer>
+</body>
+
+</html>

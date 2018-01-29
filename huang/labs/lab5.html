@@ -27,7 +27,7 @@
             max-height: 800px;
             background-size: cover;
             background-image: url("https://babygizmo.com/wp-content/uploads/2017/11/Coco-03-e1511368202303.jpg");
-            padding: 15px 0px 15px 0px;
+            padding: 15px 0 15px 0;
         }
 
         #container p {
@@ -72,7 +72,7 @@
 
 <div id="container">
     <script type="text/javascript">
-    function movie (title, genre, rating, price) {
+    function Movie (title, genre, rating, price) {
         this.genre = genre;
         this.title = title;
         this.rating = rating;
@@ -91,10 +91,10 @@
 
     <h2>Movie Suggestions</h2>
     <script type="text/javascript">
-        var movie1 = new movie("Coco", "Fantasy/Mystery", 8.7, 15);
+        var movie1 = new Movie("Coco", "Fantasy/Mystery", 8.7, 15);
         movie1.show();
 
-        var movie2 = new movie("Jumanji: Welcome to the Jungle", "Fantasy/Action", 7.2, 12.5);
+        var movie2 = new Movie("Jumanji: Welcome to the Jungle", "Fantasy/Action", 7.2, 12.5);
         movie2.show();
     </script>
 </div>

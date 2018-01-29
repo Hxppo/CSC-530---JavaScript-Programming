@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pokemon Wiki</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../css/movies.css">
+</head>
+
+<body>
+<header class="page-head">
+    <a href="../index.html">
+        <img class="logo1" src="../media/Wiki-wordmark.png" alt="wiki logo" title=""/>
+    </a>
+    <h1>Pokémon Wikipedia</h1>
+    <nav>
+        <a href="./contactus.html">
+            <b>Contact Us</b>
+        </a>
+        <a href="./login.html">
+            <b>Log In</b>
+        </a>
+        <a href="./signup.html">
+            <b>Sign Up</b>
+        </a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="navigation">
+        <div class="portal">
+            <h3>Main Navigation</h3>
+            <ul>
+                <li>
+                    <a href="../index.html">
+                        Main Page
+                    </a>
+                </li>
+                <li>
+                    <a href="./faqs.html">
+                        <b>FAQs</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="./games.html">
+                        What's New
+                    </a>
+                </li>
+                <li>
+                    <a href="./aboutus.html">
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="./customerservice.html">
+                        Customer Service
+                    </a>
+                </li>
+                <li>
+                    <a href="./gameInfo.html">
+                        Game Information
+                    </a>
+                </li>
+                <li>
+                    <a href="./movies.html">
+                        Pokemon Movies
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="portal">
+            <h3>Quick Link</h3>
+            <ul>
+                <li>
+                    <a href="../index.html#journey">
+                        Journey
+                    </a>
+                </li>
+                <li>
+                    <a href="../index.html#recent-news">
+                        News
+                    </a>
+                </li>
+                <li>
+                    <a href="../index.html#recent-animations">Animations</a>
+                </li>
+                <li>
+                    <a href="../index.html#recent-gifts">Recent Gifts</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Here are the all Pokemon Movies</h2>
+
+        <script type="text/javascript">
+            function Movie (jTitle, chTitle, time, img, description) {
+                this.jTitle = jTitle;
+                this.chTitle = chTitle;
+                this.time = time;
+                this.img = img;
+                this.description= description;
+
+                this.createRow = function (genre) {
+                    document.write("<tr>");
+                    if (genre) {
+                        document.write("<td rowspan='3'>" + genre + "</td>");
+                    }
+                    document.write("<td>" + this.jTitle + "</td>");
+                    document.write("<td>" + this.chTitle + "</td>");
+                    document.write("<td>" + this.time + "</td>");
+                    document.write('<td class="movie-cover"><img class="movie-img" src=' + '"' + this.img + '" /></td>');
+                    document.write("<td>" + this.description + "</td>");
+                    document.write("</tr>");
+                };
+            }
+
+            movies = [];
+            generations = [];
+            // Generation 1
+            var gen1 = [];
+            var movieObj = new Movie("ミュウツーの逆襲", "超夢的逆襲", "2000/2/3",
+                "../media/M01.png",
+                "一群科學家以複製的方式，製造出人工的寶可夢「超夢」。\n" +
+                "但是當超夢得知自己是被製造出來的生物時，氣得把研究所的小島整個燒毀 。火箭隊的老大聞風趕來，給了超夢製造鎧甲，控制超夢的力量，並煽動超夢跟他聯手征服世界。\n" +
+                "然而超夢並不願意配合。因為他憎恨人類把它製造出來，使得他無法成為真正的寶可夢。\n" +
+                "於是，超夢展開了對人類的反擊……");
+            gen1.push(movieObj);
+
+            movieObj = new Movie("幻のポケモン ルギア爆誕", "幻之寶可夢 洛奇亞爆誕", "2001/1/20",
+                "../media/M02.png",
+                "南海小島上有個傳說，火之神、冰之神、雷之神被人類觸怒之時，就是世界毀滅的日子。\n" +
+                "瘋狂的收藏家吉爾露太為了引出傳說中的海之神洛奇亞，捕捉了亞西亞島的火焰鳥，導致世界各地開始出現天災地變的異象。這時正好小智一行人來到亞西亞島，並在當地慶典活動中被推舉扮演傳說中的控制者。控制者必須到神鳥的三座島嶼中取得三種寶藏，在取寶藏的過程中，小智目睹神鳥被吉爾露太抓走。\n" +
+                "瘋狂收藏家吉爾露太為了個人私慾不顧世界的存亡固然令人氣憤，可是當神鳥被小智釋放後，竟不顧一切的展開亂擊。眼看著世界末日的預言真的要實現…。");
+            gen1.push(movieObj);
+
+            movieObj = new Movie("結晶塔の帝王", "結晶塔的帝王", "2002/3/38",
+                "../media/M03.png",
+                "旅途中，巧遇寶可夢訓練家小凌的小智一行人，為了讓疲累的寶可夢們休息，於是前往最近的寶可夢中心。該中心所在城市名為『綠色草原』聽起來應該是個使人心境祥和的地方，沒想到來到這綠色原鎮時，面對突如其來的景象感到震撼，因為原本美麗的綠色草原鎮，瞬間竟然變成了冰冷的結晶城……。\n" +
+                "原來獨自孤獨生活的少女小美，在某夜，因為将下落不明的父親秀力所留下的未知圖騰卡排列後，沒想到卻因此開啟了可怕的「結晶世界」！\n" +
+                "而傳說的寶可夢「炎帝」竟然將小智的媽媽带往結晶塔裡去了！小智一行人是否能夠將媽媽平安地救回來呢？");
+            gen1.push(movieObj);
+            movies.push(gen1);
+            generations.push("Generation 1");
+
+            // Generation 2
+            var gen2 = [];
+            movieObj = new Movie("七夜の願い星 ジラーチ", "七夜的許願星 基拉祈", "2003/7/19",
+                "../media/M06.png",
+                "千年一次的彗星之夜裡，願望將會實現…\n" +
+                "立志成為出色的寶可夢訓練家的小智、小遙和小勝，帶著皮卡丘展開了新的旅程。\n" +
+                "為了觀看千年彗星出現的剎那，來到法恩斯遊樂場，並認識魔術師巴特勒與黛安。在魔術表演中，小勝聽到一陣細微的呼喚聲…。\n" +
+                "那是在「沉眠之繭」中沉睡了千年，可幫助人類達成願望的寶可夢─基拉祈。在千年彗星出現的夜晚，如果遇到擁有純真心靈的夥伴便會清醒。為了讓基拉祈醒來，巴特勒請小勝當基拉祈的夥伴，果然，基拉祈從萬花鏡般的光芒中清醒過來。\n" +
+                "雖然基拉祈只能停留短暫的7日就會再消失，但是頭一次擁有屬於自己的寶可夢的小勝，對基拉祈卻非常寵愛。充滿野心的魔術師巴特勒，因為知道基拉祈具有神奇的力量，便把基拉祈給搶走，並且想利用他來完成願望。\n" +
+                "不懷好意的巴特勒，他的願望是什麼呢？小智與小勝要如何克服困難，成功救出同伴呢？小勝與基拉祈又會面臨怎樣的生離死別呢？");
+            gen2.push(movieObj);
+
+            movieObj = new Movie("裂空の訪問者", "裂空的訪問者 代歐奇希斯", "2004/7/17",
+                "../media/M07.png",
+                "從外太空飛來的隕石墜落在大冰原上。為了調查住在冰原的寶可夢而來的科學家倫多博士，他的兒子小超卻意外被捲入墜落時產生的暴風。在一片的水蒸氣中隱約現身的是神秘的寶可夢代歐奇希斯。就在這時候出現了宇宙寶可夢烈空坐，和代歐奇希斯展開激烈的戰鬥。而倫多博士和小超也被捲入他們的激鬥中。\n" +
+                "在那之後經過了四年。有一天小智和皮卡丘們來到了高科技城市拉魯斯市。想在這裡的對戰塔和其他的寶可夢進行戰鬥。小智巧遇一名少年而他就是小超。小超因為四年前的事，讓他完全無法和寶可夢相處。小智和皮卡丘在知道這樣的情形後積極幫小智克服這問題。這時候突然出現了神秘寶可夢代歐奇希斯。他的目的到底是什麼。\n" +
+                "以高科技城市為舞台，即將展開精靈寶可夢史上最大的冒險！");
+            gen2.push(movieObj);
+            movieObj = new Movie("ミュウと波導の勇者", "夢幻與波導的勇者 路卡利歐", "2005/7/16",
+                "../media/M08.png",
+                "在很久很久以前，還沒有精靈球的時代，有一場寶可夢大戰。勇者亞朗和他的宝可梦路卡利歐，為了阻止大戰，藉著波導的力量努力讓戰爭平息，人們也因此稱亞朗為「波導的勇者」。\n" +
+                "百年之後，小智和皮卡丘一行人來到歐魯德朗城，參加為了讚頌勇者亞朗而舉行的寶可夢對戰和慶典。小智在對戰中贏得了勝利，被封上「波導的勇者」的稱號，並獲得在祭典時拿著「勇者之杖」化身勇者的權利。\n" +
+                "就在舉行盛大的慶典之時，被封印在「勇者之杖」中的寶可夢路卡利歐竟然在小智的眼前清醒，並說出百年前亞朗棄城潛逃的秘密！？\n" +
+                "另一方面，奇幻的寶可夢「夢幻」突然現身，並且帶走皮卡丘和喵喵。小智為了尋找皮卡丘，在路卡利歐的帶路下，向「世界初始之樹」前進。在神祕的「世界初始之樹」下究竟隱藏著什麼謎團？皮卡丘被夢幻帶到哪裡去了？傳說中的勇者亞朗和路卡利歐「波導傳說」的秘密到底是什麼？");
+            gen2.push(movieObj);
+            movies.push(gen2);
+            generations.push("Generation 2");
+
+            // Generation 3
+            var gen3 = [];
+            movieObj = new Movie("破壊の繭と ディアンシー", "破壞之繭與蒂安希", "2014/7/19",
+                "../media/M17.png",
+                "深藏於地底的净土「钻石矿国」，传说住著一群岩石屬性、妖精屬性的小碎鑽。\n" +
+                "「钻石矿国」多年来持续依赖著「神聖鑽石」发出的能量支撑整个国度，不过只有这个国家的公主能够创造出这些钻石，但现任公主的蒂安希却还无法驾驭这项能力。\n" +
+                "如今「神聖鑽石」的生命之力逐渐流失，若无人设法拯救这一切，钻石礦国将面临末日！就在此刻，蒂安希遇见了小智一行人，为挽回钻石的光芒，他们一同展开寻找「生命宝可梦」哲尔尼亚斯的冒险之旅。 然而在前方等待著他们的是沉睡於茧中、曾经在卡洛斯地区造成毁灭性破坏的「破坏宝可梦」伊裴尔塔尔……！\n" +
+                "在旅途中，女盗贼玛丽伶和忍者盗贼莱爾特，以及火箭队三人組为了夺取蒂安希的能力，袭击了他们。\n" +
+                "借助彌莉丝·阿尔蓋斯亲子的力量，一行人解除了危机并继续他们的旅途，结果他们发现了曾经消灭了卡洛斯地区所有生命的 「破坏宝可梦」伊裴尔塔尔沉眠的茧，被它挡住了去路——。\n" +
+                "在这紧迫的危机中，蒂安希能否拯救自己的国度呢？而且，小智和皮卡丘的命运会怎样!?");
+            gen3.push(movieObj);
+            movieObj = new Movie("光輪の超魔神 フーパ", "光環的超魔神 胡帕", "2015/7/18",
+                "../media/M18.png",
+                "小智一行人在沙漠中的寶可夢中心休息時，背後突然出現了謎之光環！光環中出現了一隻手並奪走了甜甜圈，小智與皮卡丘為了緊抓住這隻手而被吸入光環之中，留下了呆住的莎莉娜、希特隆和柚麗嘉…\n" +
+                "被吸入光環中的小智與皮卡丘瞬間移動來到了荒漠市，在那裡，他們遇到來自創世之谷的少女梅雅利和胡帕，喜歡惡作劇的胡帕跟小智及皮卡丘立刻成為好朋友。而後，小智他們跟梅雅利的哥哥巴爾札相遇，" +
+                "他手上有據說是封印了某隻寶可夢的「懲戒之壶」，這壺在散發出邪惡氣息後，突然自行解除封印，一隻擁有相同邪惡氣息的寶可夢隨即出現！傳說的寶可夢們也都現身並置城鎮處於危險之中。 為了保護城市，小智、皮卡丘以及胡帕的冒險開始了！");
+            gen3.push(movieObj);
+            movieObj = new Movie("ボルケニオン‎ 機巧のマギアナ", "波爾凱尼恩與機關人偶瑪機雅娜", "2016/7/16",
+                "../media/M19.png",
+                "小智一行人在旅行途中，突然一个笼罩着白煙的大物從天而降落到他們的面前，白煙散去後，眼前出現了一个巨大的身影——幻之寶可夢波尔凯尼恩‎。\n" +
+                "討厭人類的波尔凯尼恩‎無視正在關心牠的小智一行人，立即準備離開，但從天而降的撞擊使奇妙的裝置把牠和小智粘在一起，無法分開。\n" +
+                "波尔凯尼恩‎就拉上了小智繼續跑去，抵達了一个到處都有巨大齒輪在一直轉動着的超機關都市阿佐特王國。" +
+                "波尔凯尼恩‎为何會從天而降？又为何要去阿佐特王國？宝可梦史上最炎熱的傳說即將開始！");
+            gen3.push(movieObj);
+            movies.push(gen3);
+            generations.push("Generation 3");
+        </script>
+
+        <div id="movies">
+            <article>
+                <table id="movie-table">
+                    <thead>
+                        <tr>
+                            <th>Generation</th>
+                            <th>Japanese Title</th>
+                            <th>Chinese Title</th>
+                            <th>Release Time</th>
+                            <th>Movie Post</th>
+                            <th>Introduction</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <script type="text/javascript">
+                            movies.forEach(function(gen, i) {
+                                var generation = generations[i];
+                                gen.forEach(function (m, j) {
+                                    if (j === 0) {
+                                        m.createRow(generation);
+                                    } else {
+                                        m.createRow();
+                                    }
+                                })
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </article>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>
+        <b>Posted by: </b>Xin Huang</p>
+    <p>
+        <b>Contact information: </b>
+        <a href="mailto:huangxin1657@students.itu.edu">huangxin1657@students.itu.edu</a>
+    </p>
+</footer>
+
+</body>
+
+
+</html>
