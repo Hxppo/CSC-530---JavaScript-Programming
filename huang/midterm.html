@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Midterm</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="midterm.js"></script>
+    <link rel="stylesheet" href="midterm.css">
+</head>
+
+<body>
+<header>
+    <h1>Midterm</h1>
+</header>
+
+<div id="container">
+    <script type="text/javascript">
+        myWin = loadURL("");
+        myWin.document.write('<html><head><title>Midterm</title>');
+        myWin.document.write('<script type="text/javascript" src="midterm.js"></scr' + 'ipt>');
+        myWin.document.write('<link rel="stylesheet" type="text/css" href="midterm.css"></head><body>');
+        myWin.document.write("<h2>Cruise....Hot Deals!</h2>");
+        myWin.document.write(createListOfLinks(linkNameArray, targetURLArray));
+        myWin.document.write('</body></html>');
+    </script>
+</div>
+
+<footer>
+    <p><b>Posted by: </b>Xin Huang</p>
+    <p>
+        <b>Contact information: </b>
+        <a href="mailto:huangxin1657@students.itu.edu">huangxin1657@students.itu.edu</a>
+    </p>
+</footer>
+</body>
+
+</html>
