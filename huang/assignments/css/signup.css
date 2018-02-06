@@ -110,7 +110,7 @@ nav a:hover {
     float: right;
     border-left: thin solid #A5D6F9;
     border-bottom: thin solid #A5D6F9;
-    background: url(../media/eevee3.png) repeat;
+    background-color: white;
     background-size: contain;
 }
 

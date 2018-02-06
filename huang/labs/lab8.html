@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Labs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="lab8.css">
+</head>
+
+<body>
+<header>
+    <h1>Lab 8: window</h1>
+</header>
+
+<div id="container">
+    <h2> Here is the movie picked</h2>
+    <script type="text/javascript">
+        function Movie (title, genre, rating, price, img, actor, titleURL, actorURL, description, actorIntro) {
+            this.genre = genre;
+            this.title = title;
+            this.rating = rating;
+            this.price = price;
+            this.img = img;
+            this.actor = actor;
+            this.titleURL = titleURL;
+            this.actorURL = actorURL;
+            this.description = description;
+            this.actorIntro = actorIntro;
+        }
+
+        Movie.prototype.show = function () {
+            document.write('<div class="movie-block"><article>');
+            document.write("<p>" + "Title: " + this.title + "</p>");
+            document.write("<p>" + "Genre: " + this.genre + "</p>");
+            document.write("<p>" + "Rating: " + this.rating + "/10</p>");
+            document.write("<p>" + "Price: $" + this.price + "</p>");
+            document.write("<p>" + "Actor: " + this.actor + "</p></article>");
+            document.write('<img class="movie-img" src=' + '"' + this.img + '" />');
+            document.write("</div>");
+        };
+
+        Movie.prototype.getImage = function () {
+            return [
+                '<div class="movie-img">',
+                '<img src=' + '"' + this.img + '" />',
+                "</div>"
+            ].join('');
+        };
+
+        Movie.prototype.getDescription = function () {
+            return [
+                '<div class="movie-desc"><p>',
+                this.description,
+                "</p></div>"
+            ].join('');
+        };
+
+        Movie.prototype.getActorIntro = function () {
+            return [
+                '<div class="movie-desc"><p>',
+                this.actorIntro,
+                "</p></div>"
+            ].join('');
+        };
+
+        Movie.prototype.toString = function () {
+            return [
+                '<div class="movie-block"><article>',
+                "<p>" + "Title: " + this.title + "</p>",
+                "<p>" + "Genre: " + this.genre + "</p>",
+                "<p>" + "Rating: " + this.rating + "/10</p>",
+                "<p>" + "Price: $" + this.price + "</p>",
+                "<p>" + "Actor: " + this.actor + "</p></article>",
+                '<img class="movie-img" src=' + '"' + this.img + '" />',
+                "</div>"].join('');
+        };
+
+        var createLink = function(linkName, targetURL) {
+            return [
+                '<a href="',
+                targetURL,
+                '">',
+                linkName,
+                '</a>'
+            ].join('');
+        };
+
+        var createListOfLinks = function (linkNameArray, targetURLArray) {
+            var list = ['<ul>'];
+            linkNameArray.forEach(function (linkName, index) {
+                list.push('<li>');
+                list.push(createLink(linkName, targetURLArray[index]));
+                list.push('</li>');
+            });
+            list.push('</ul>');
+            return list.join('');
+        };
+
+        var desc = "Four high school kids discover an old video game console and are drawn into the game's jungle " +
+            "setting, literally becoming the adult avatars they chose. What they discover is that you don't just play " +
+            "Jumanji - you must survive it. To beat the game and return to the real world, they'll have to go on the " +
+            "most dangerous adventure of their lives, discover what Alan Parrish left 20 years ago, and change the way" +
+            " they think about themselves - or they'll be stuck in the game forever.";
+
+        var actorIntro = "Dwayne Douglas Johnson, also known as The Rock, was born on May 2, 1972 in Hayward, " +
+            "California, to Ata Johnson (born Feagaimaleata Fitisemanu Maivia) and Canadian-born professional wrestler" +
+            " Rocky Johnson (born Wayde Douglas Bowles). His father is black (of Black Nova Scotian descent), and his " +
+            "mother is of Samoan background (her own father was Peter Fanene Maivia, also a professional wrestler)." +
+            " While growing up, Dwayne traveled around a lot with his parents and watched his father perform in the" +
+            " ring. During his high school years, Dwayne began playing football and he soon received a full scholarship" +
+            " from the University of Miami, where he had tremendous success as a football player. In 1995, Dwayne " +
+            "suffered a back injury which cost him a place in the NFL. He then signed a three-year deal with the" +
+            " Canadian League but left after a year to pursue a career in wrestling.";
+
+        movieObj = new Movie("Jumanji: Welcome to the Jungle", "Fantasy/Action", 7.2, 12.5,
+            "http://t2.gstatic.com/images?q=tbn:ANd9GcSGLiKxLm4FSbjNzysaI8xVoUEE27RDObZg9pSiP28nvSEwy7Mb", "Dwayne Johnson",
+            "http://www.imdb.com/title/tt2283362/",
+            "http://www.imdb.com/name/nm0425005/?ref_=tt_cl_t1", desc, actorIntro);
+
+        // write content to original
+        document.write(movieObj.getImage());
+
+        myWin = window.open("", "My Window", "width=600, height=800, scrollbars=yes, status=yes, resizable=true");
+        myWin.movieObj = movieObj;
+
+        myWin.document.write('<html><head><title>Movie</title><link rel="stylesheet" type="text/css" href="lab8.css"></head><body>');
+        // insert movie preference
+        myWin.document.write('<div id="container">');
+        myWin.document.write("<h2>What About The Movie</h2>");
+        myWin.document.write(movieObj.getDescription());
+        myWin.document.write(movieObj.getImage());
+
+        // add four links required here
+        var linkNameArray = [
+            "Click Here to Access the Movie Window",
+            "Click Here to Access the Actor Window",
+            "Click Here to Close the Movie Window",
+            "Click Here to Close the Actor Window",
+            "Click Here to Close This Window"
+        ];
+
+        myWin.openMovieWin = function () {
+            myWin.movieWin = window.open(movieObj.titleURL, "Movie", "width=1200, height=800, scrollbars=yes, status=yes, resizable=true");
+        };
+
+        myWin.openActorWin = function () {
+            myWin.actorWin = window.open("", "Actor", "width=1200, height=800, scrollbars=yes, status=yes, resizable=true");
+            myWin.actorWin.openActorDetailWin = function() {
+                window.open(movieObj.actorURL, "ActorIntro", "width=1200, height=800");
+            };
+
+            // write content into actionWin
+            myWin.actorWin.document.write('<html><head><title>Actor</title><link rel="stylesheet" type="text/css" href="lab8.css"></head><body>');
+            myWin.actorWin.document.write(movieObj.getActorIntro());
+            myWin.actorWin.document.write("<div>");
+            myWin.actorWin.document.write(createLink("Click Here for More Information", "javascript:openActorDetailWin();"));
+            myWin.actorWin.document.write("<div>");
+            myWin.actorWin.document.write('</body></html>');
+        };
+
+        var targetURLArray = [
+            'javascript: openMovieWin()',
+            'javascript: openActorWin()',
+            "javascript: movieWin.close()",
+            "javascript: actorWin.close()",
+            "javascript: window.close();"
+        ];
+        myWin.document.write('<div>' + createListOfLinks(linkNameArray, targetURLArray) + '</div>');
+
+        myWin.document.write("</div>");
+        myWin.document.write('</body></html>');
+    </script>
+</div>
+
+<footer>
+    <p><b>Posted by: </b>Xin Huang</p>
+    <p>
+        <b>Contact information: </b>
+        <a href="mailto:huangxin1657@students.itu.edu">huangxin1657@students.itu.edu</a>
+    </p>
+</footer>
+</body>
+
+</html>
