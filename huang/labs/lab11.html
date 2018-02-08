@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Labs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+        div {
+            width: 50%;
+            height: 100px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        #lab11 {
+            background-color: yellow;
+        }
+
+        .lab11Border {
+            background-color: lightblue;
+            border: solid black 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lab11">
+        <h1 onclick="addMovieDiv()">Click Here to Add More Movie</h1>
+    </div>
+
+<script type="text/javascript">
+    function addMovieDiv() {
+        var answer = prompt("Enter Your movie");
+        var newNode = document.createElement("div");
+        newNode.className = "lab11Border";
+        newNode.innerHTML = "<h1>" + answer + "</h1>";
+
+        var currentNode = document.getElementsByTagName("div")[0];
+        var parentNode = currentNode.parentNode;
+        parentNode.insertBefore(newNode, currentNode);
+    }
+</script>
+
+
+</body>
+
+</html>

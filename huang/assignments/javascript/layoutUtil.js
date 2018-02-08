@@ -1,4 +1,3 @@
-// create navigation bar
 function createLinkObject(desc, url) {
     return {
         "desc": desc,
@@ -24,37 +23,45 @@ var QUICK_NAVIGATION = [
 ];
 
 function createLink(linkName, targetURL) {
-    return [
-        '<a href="',
-        targetURL,
-        '">',
-        linkName,
-        '</a>'
-    ].join('');
+    var node = document.createElement("a");
+    node.href = targetURL;
+    node.innerHTML = linkName;
+
+    return node;
 }
 
 function createListOfLinks(links, baseURL, skipFirstElement) {
-    var list = ['<ul>'];
+    var root = document.createElement("ul");
+    var listNode = null;
     links.forEach(function (oLink, index) {
-        list.push('<li>');
+        listNode = document.createElement("li");
         if (index === 0 && skipFirstElement) {
-            list.push(createLink(oLink.desc, oLink.link));
+            listNode.appendChild(createLink(oLink.desc, oLink.link));
         } else {
-            list.push(createLink(oLink.desc, baseURL + oLink.link));
+            listNode.appendChild(createLink(oLink.desc, baseURL + oLink.link));
         }
-        list.push('</li>');
+        root.appendChild(listNode);
     });
-    list.push('</ul>');
-    return list.join('');
+
+    return root;
+}
+
+function createElementWithClass(tag, className) {
+    var node = document.createElement(tag);
+    node.className = className;
+    return node;
 }
 
 function createNavigationBar(isIndex) {
     isIndex = isIndex || false;
 
-    document.write('<div class="navigation">');
+    var root = document.getElementsByClassName("container")[0];
+    var navigation = createElementWithClass("div", "navigation");
+    root.appendChild(navigation);
+
     // create main navigation
-    document.write('<div class="portal">');
-    document.write('<h3>Main Navigation</h3>');
+    var portal = createElementWithClass("div", "portal");
+    portal.innerHTML = '<h3>Main Navigation</h3>';
 
     var baseURL;
     if (isIndex) {
@@ -64,17 +71,16 @@ function createNavigationBar(isIndex) {
         MAIN_NAVIGATION.unshift(createLinkObject("Main Page", "../index.html"));
         baseURL = "./";
     }
-    document.write(createListOfLinks(MAIN_NAVIGATION, baseURL, true));
-    document.write('</div>');
+
+    portal.appendChild(createListOfLinks(MAIN_NAVIGATION, baseURL, true));
+    navigation.appendChild(portal);
 
     // create quick link
-    document.write('<div class="portal">');
-    document.write('<h3>Quick Links</h3>');
+    var portal2 = createElementWithClass("div", "portal");
+    portal2.innerHTML = '<h3>Main Navigation</h3>';
     baseURL = isIndex ? '' : '../';
-    document.write(createListOfLinks(QUICK_NAVIGATION, baseURL, false));
-    document.write('</div>');
-
-    document.write('</div>');
+    portal2.appendChild(createListOfLinks(QUICK_NAVIGATION, baseURL, false));
+    navigation.appendChild(portal2);
 }
 
 
@@ -93,7 +99,8 @@ Pokemon.prototype.generatePage = function() {
 };
 
 function loadURL(url) {
-    return window.open(url, "new window", "width=300, height=500, toolbar=no, " +
+    return window.open(url, "new window", "width=500, height=500, " +
+        "left=400, top=150, toolbar=no, " +
         "menubar=no, scrollbars=yes, resizable=true");
 }
 
@@ -117,13 +124,14 @@ function createPokemons() {
 
 link1 = 'bulbasaur.html';
 link2 = 'pikachu.html';
-function getFavoriatePokemons() {
+function getFavoriatePokemons(parentNode) {
     var links = [
         createLinkObject("フシギダネ Bulbasaur", 'javascript: loadURL(link1)'),
         createLinkObject("ピカチュウ Pikachu", 'javascript: loadURL(link2)')
     ];
 
-    document.write(createListOfLinks(links, '', false));
+    var listNode = createListOfLinks(links, '', false);
+    parentNode.appendChild(listNode);
 }
 
 function closeWindow() {
@@ -132,11 +140,19 @@ function closeWindow() {
     }, 3000);
 }
 
-function addLinksToPokemonPage() {
+function printPage() {
+    print();
+}
+
+function addLinksToPokemonPage(parent) {
     var links = [
-        createLinkObject("Print", 'javascript: window.print()'),
+        createLinkObject("Print", 'javascript: printPage()'),
         createLinkObject("Set Timeout To Close", 'javascript: closeWindow()')
     ];
-    return createListOfLinks(links, '', false);
+    parent.appendChild(createListOfLinks(links, '', false));
 }
+
+// Assignment 5
+
+
 

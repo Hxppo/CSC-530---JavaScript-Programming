@@ -5,7 +5,7 @@
     <title>Labs</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="lab8.css">
+    <link rel="stylesheet" href="lab.css">
 </head>
 
 <body>
@@ -64,17 +64,7 @@
             ].join('');
         };
 
-        Movie.prototype.toString = function () {
-            return [
-                '<div class="movie-block"><article>',
-                "<p>" + "Title: " + this.title + "</p>",
-                "<p>" + "Genre: " + this.genre + "</p>",
-                "<p>" + "Rating: " + this.rating + "/10</p>",
-                "<p>" + "Price: $" + this.price + "</p>",
-                "<p>" + "Actor: " + this.actor + "</p></article>",
-                '<img class="movie-img" src=' + '"' + this.img + '" />',
-                "</div>"].join('');
-        };
+
 
         var createLink = function(linkName, targetURL) {
             return [
@@ -124,7 +114,7 @@
         myWin = window.open("", "My Window", "width=600, height=800, scrollbars=yes, status=yes, resizable=true");
         myWin.movieObj = movieObj;
 
-        myWin.document.write('<html><head><title>Movie</title><link rel="stylesheet" type="text/css" href="lab8.css"></head><body>');
+        myWin.document.write('<html><head><title>Movie</title><link rel="stylesheet" type="text/css" href="lab.css"></head><body>');
         // insert movie preference
         myWin.document.write('<div id="container">');
         myWin.document.write("<h2>What About The Movie</h2>");
@@ -151,7 +141,7 @@
             };
 
             // write content into actionWin
-            myWin.actorWin.document.write('<html><head><title>Actor</title><link rel="stylesheet" type="text/css" href="lab8.css"></head><body>');
+            myWin.actorWin.document.write('<html><head><title>Actor</title><link rel="stylesheet" type="text/css" href="lab.css"></head><body>');
             myWin.actorWin.document.write(movieObj.getActorIntro());
             myWin.actorWin.document.write("<div>");
             myWin.actorWin.document.write(createLink("Click Here for More Information", "javascript:openActorDetailWin();"));

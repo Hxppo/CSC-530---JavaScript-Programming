@@ -180,24 +180,6 @@ input[type=radio]:checked {
     padding-top: 50px;
 }
 
-#recent-gifts {
-    border: thick solid #CF0037;
-    color: #CF0037;
-}
-
-#recent-gifts-title {
-    background-color: #FF6E91;
-    border: thin solid white;
-    border-radius: 10px;
-}
-
-#movies {
-    margin: 2px;
-    background-color: #FFCFDB;
-    border: thin solid #FF6E91;
-    border-radius: 10px;
-}
-
 #movie-table tr, td, th {
     border: 1px solid black;
 }

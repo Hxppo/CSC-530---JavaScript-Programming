@@ -36,18 +36,17 @@
     <div class="content">
         <h2>Here are our latest Pokemon games:</h2>
         <div class="games-wall">
-            <img class="game-cover" src="../media/Game1.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game2.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game3.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game4.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game5.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game6.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game7.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game8.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game9.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game10.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game11.png" alt="wiki logo" title=""/>
-            <img class="game-cover" src="../media/Game12.png" alt="wiki logo" title=""/>
+            <script type="text/javascript">
+                var imgNode = null;
+                for (var i = 1; i <= 12; i++) {
+                    imgNode = document.createElement('img');
+                    imgNode.className = "game-cover";
+                    imgNode.src = "../media/Game" + i + ".png";
+                    imgNode.alt = "game cover";
+
+                    document.getElementsByClassName("games-wall")[0].appendChild(imgNode);
+                }
+            </script>
         </div>
 
     </div>

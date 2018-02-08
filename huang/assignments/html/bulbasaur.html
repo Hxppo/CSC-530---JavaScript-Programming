@@ -37,8 +37,7 @@
         <script type="text/javascript">
             createPokemons();
             document.write(pokemons[0].generatePage());
-            // add links
-            document.write(addLinksToPokemonPage());
+            addLinksToPokemonPage(document.getElementsByClassName("content")[0]);
         </script>
     </div>
 </div>
