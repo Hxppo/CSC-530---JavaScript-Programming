@@ -7,12 +7,13 @@ function createLinkObject(desc, url) {
 
 var MAIN_NAVIGATION = [
     createLinkObject("FaQs", "faqs.html"),
-    createLinkObject("What's New", "games.html"),
     createLinkObject("About Us", "aboutus.html"),
     createLinkObject("Customer Service", "customerservice.html"),
-    createLinkObject("Game Information", "gameInfo.html"),
+    createLinkObject("Game Lookup", "gameInfo.html"),
     createLinkObject("Pokemon Movies", "movies.html"),
-    createLinkObject("Favorite Pokemons", "pokemons.html")
+    createLinkObject("Pokemon Games", "games.html"),
+    createLinkObject("Favorite Pokemons", "pokemons.html"),
+    createLinkObject("What's New", "whatsnew.html")
 ];
 
 var QUICK_NAVIGATION = [
@@ -49,6 +50,12 @@ function createListOfLinks(links, baseURL, skipFirstElement) {
 function createElementWithClass(tag, className) {
     var node = document.createElement(tag);
     node.className = className;
+    return node;
+}
+
+function createElementWithID(tag, id) {
+    var node = document.createElement(tag);
+    node.id = id;
     return node;
 }
 
@@ -134,25 +141,20 @@ function getFavoriatePokemons(parentNode) {
     parentNode.appendChild(listNode);
 }
 
-function closeWindow() {
+function closePageAfterPrint() {
+    print();
     setTimeout(function() {
         window.close();
-    }, 3000);
-}
-
-function printPage() {
-    print();
+    }, 2000);
 }
 
 function addLinksToPokemonPage(parent) {
     var links = [
-        createLinkObject("Print", 'javascript: printPage()'),
-        createLinkObject("Set Timeout To Close", 'javascript: closeWindow()')
+        createLinkObject("Print", 'javascript: closePageAfterPrint()'),
+        createLinkObject("Close Window", 'javascript: void close()')
     ];
     parent.appendChild(createListOfLinks(links, '', false));
 }
-
-// Assignment 5
 
 
 

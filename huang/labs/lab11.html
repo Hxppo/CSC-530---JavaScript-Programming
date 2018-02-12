@@ -36,9 +36,11 @@
         newNode.className = "lab11Border";
         newNode.innerHTML = "<h1>" + answer + "</h1>";
 
-        var currentNode = document.getElementsByTagName("div")[0];
-        var parentNode = currentNode.parentNode;
-        parentNode.insertBefore(newNode, currentNode);
+        var nodes = document.getElementsByTagName("div");
+        var lastNode = nodes[nodes.length - 1];
+
+        var parentNode = lastNode.parentNode;
+        parentNode.insertBefore(newNode, lastNode);
     }
 </script>
 

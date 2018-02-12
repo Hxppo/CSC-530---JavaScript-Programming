@@ -1,6 +1,6 @@
 loadURL = function (url) {
     return window.open(url, "", "width=600, height=600");
-}
+};
 
 function Cruise (date, destination, cruiseDesc, cruiseURL, shipName, shipDesc, shipURL, price) {
     this.date = date;
@@ -9,6 +9,7 @@ function Cruise (date, destination, cruiseDesc, cruiseURL, shipName, shipDesc, s
     this.cruiseURL = cruiseURL;
     this.shipName = shipName;
     this.shipDesc = shipDesc;
+    // noinspection JSUnusedGlobalSymbols
     this.shipURL = shipURL;
     this. price = price;
 }
@@ -68,7 +69,7 @@ cruises.push(cruise2);
 
 var cruise3Desc = "Cruise Hawaii on the newly refurbished Pride of America.\n" +
     "The only cruise sailing 4 Hawaiian islands in 7 days year-round!\n" +
-    "Voted best Hawaii Itinerary 12 years in a row!"
+    "Voted best Hawaii Itinerary 12 years in a row!";
 
 var ship3Desc = "Aloha! Come aboard Pride of America for the best way to island hop Hawaii. From the moment " +
     "you step into the Capitol Atrium, with its soaring Tiffany-glass dome and grand staircase, you’ll know this is" +
@@ -143,11 +144,11 @@ var createHeader = function (newWindow, header) {
         newWindow.document.write("<th>" + cell + "</th>");
     });
     newWindow.document.write("</tr></thead>");
-}
+};
 
 popupWindow = function (url) {
     return window.open(url, "", "width=800, height=800, scrollbars=yes, resizable=true");
-}
+};
 
 loadDesc = function (desc, url) {
     var newWin = window.open("", "", "width=800, height=800");
@@ -156,7 +157,7 @@ loadDesc = function (desc, url) {
     newWin.document.write("<article>" + desc + "</article>");
     newWin.document.write(createLink("Click here for more information...", 'javascript: popupWindow(' + "'" +  url + "'" + ')'));
     newWin.document.write('</body></html>');
-}
+};
 
 displayList = function (cruises) {
     var newWin = loadURL("");
@@ -175,4 +176,4 @@ displayList = function (cruises) {
     newWin.document.write("</tbody></table>");
 
     newWin.document.write('</body></html>');
-}
+};

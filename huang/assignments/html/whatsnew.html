@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pokemon Wiki</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="../javascript/layoutUtil.js"></script>
+
+    <style>
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            box-sizing: border-box;
+            max-width: 1250px;
+            width: 100%;
+            overflow: auto;
+            margin: auto;
+            background-color: #eff1f4;
+            border: thin solid grey;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            font-weight: bold;
+        }
+
+        /* header */
+        .page-head {
+            background: #4250f4;
+            width: 100%;
+            box-sizing: border-box;
+            top: 0;
+        }
+
+        .logo1 {
+            margin: 0;
+            box-sizing: border-box;
+            float: left;
+            padding-top: 16px;
+            display: inline-flex;
+        }
+
+        .page-head h1 {
+            height: 81px;
+            line-height: 100px;
+            color: white;
+            margin: 0;
+            box-sizing: border-box;
+            text-align: left;
+            padding-left: 150px;
+            overflow: hidden;
+        }
+
+        .page-head nav {
+            width: 100%;
+            height: 33px;
+            margin-top: 5px;
+            line-height: 30px;
+            padding-top: 4px;
+            background-color: black;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: underline;
+            float: right;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        nav a:hover {
+            background-color: green;
+            color: white;
+        }
+
+        /* main containers */
+        .container {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        /* navigation bar */
+        .navigation {
+            width: 100%;
+            max-width: 200px;
+            margin: 0;
+            padding: 0;
+            float: left;
+            border-top: none;
+        }
+
+        .portal {
+            width: 100%;
+            padding: 15px;
+            background: url(../media/nav-border.png) no-repeat top left;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1010px;
+            min-height: 500px;
+            margin: 0;
+            padding: 0 5px 5px 18px;
+            float: right;
+            border-left: thin solid #A5D6F9;
+            border-bottom: thin solid #A5D6F9;
+            background-color: white;
+            background-size: contain;
+        }
+
+        h2 {
+            border-bottom: thin solid #A9A9A9;
+            padding: 20px;
+        }
+
+        .content h3 {
+            padding: 10px;
+            color: #B72A6C;
+        }
+
+        #pokemon_block {
+            font-size: medium;
+            font-weight: bold;
+            color: #B72A6C;
+            background-color: #89D7FB;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            text-align: center;
+        }
+
+        #pokemon_block img{
+            width: 60%;
+            height: 60%;
+        }
+
+        /* footer section */
+        footer {
+            box-sizing: border-box;
+            width: 100%;
+            height: 50px;
+            bottom: 0;
+        }
+
+        footer p {
+            display: block;
+            text-align: center;
+            color: black;
+            height: 12px;
+            margin: 0;
+            padding-top: 8px;
+            font-size: 12px;
+        }
+
+        /* Add media query support*/
+        @media screen and (max-width: 800px) {
+            .content {width: 99%;}
+            body {
+                border: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header class="page-head">
+    <a href="../../index.html">
+        <img class="logo1" src="../media/Wiki-wordmark.png" alt="wiki logo" title=""/>
+    </a>
+    <h1>Pokémon Wikipedia</h1>
+    <nav>
+        <a href="./contactus.html">
+            <b>Contact Us</b>
+        </a>
+        <a href="./login.html">
+            <b>Log In</b>
+        </a>
+        <a href="./signup.html">
+            <b>Sign Up</b>
+        </a>
+    </nav>
+</header>
+
+<div class="container">
+    <script type="text/javascript">
+        createNavigationBar(false);
+    </script>
+
+    <div class="content">
+        <h2>What's New</h2>
+        <script type="text/javascript">
+            var rootNode = document.getElementsByClassName("content")[0];
+            var newNode = createElementWithID("div", "pokemon_block");
+            rootNode.appendChild(newNode);
+
+            // add title
+            var title = document.createElement("h3");
+            title.innerText = "What's New!";
+            newNode.appendChild(title);
+
+            // add image
+            var image = document.createElement("img");
+            image.src = "../media/Necrozma.png";
+            newNode.appendChild(image);
+
+            function moveBlock(event) {
+                var clientX = event.clientX;
+                var clientY = event.clientY;
+
+                var pageX = event.pageX;
+                var pageY = event.pageY;
+
+                newNode.style.left = pageX + "px";
+                newNode.style.top = pageY + "px";
+            }
+            document.body.addEventListener("click", moveBlock);
+        </script>
+
+        <h3>奈克洛兹玛的秘密</h3>
+        <p>
+            在精灵宝可梦 究极之日／究极之月中，奈克洛兹玛吸收了传说宝可索尔迦雷欧或露奈雅拉的力量，
+            变成“奈克洛兹玛（黄昏之鬃）”或“奈克洛兹玛（拂晓之翼）”。
+            由于它吸收了被视为太阳和月亮使者的宝可梦们后的样子，也常被称为“日食/月食奈克洛兹玛”。
+            在《精灵宝可梦 究极之日》的冒险中会遇到奈克洛兹玛（黄昏之鬃），而在《精灵宝可梦 究极之月》中会遇到奈克洛兹玛（拂晓之翼）。
+            奈克洛兹玛（黄昏之鬃）可使用只有索尔迦雷欧才能学习的招式“流星闪冲”；而奈克洛兹玛（拂晓之翼）
+            可使用只有露奈雅拉才能学习的招式“暗影之光”。
+        </p>
+        <h3>专用招式“光子喷涌”</h3>
+        <p>
+            以光之柱攻击对手，是只有奈克洛兹玛才能学会的超能力属性特殊招式。
+            日食奈克洛兹玛和月食奈克洛兹玛都可以学习。
+            这个招式将通过自身的“攻击”和“特攻”中数值更高的一方给予对手伤害，因此不管是“攻击”非常高的日食奈克洛兹玛，
+            还是“特攻”非常高的月食奈克洛兹玛，两者都可以充分发挥出强大的效果。
+        </p>
+    </div>
+</div>
+<footer>
+    <p>
+        <b>Posted by: </b>Xin Huang</p>
+    <p>
+        <b>Contact information: </b>
+        <a href="mailto:huangxin1657@students.itu.edu">huangxin1657@students.itu.edu</a>
+    </p>
+</footer>
+
+</body>
+</html>
