@@ -135,8 +135,8 @@
             width: 200px;
             height: 200px;
             position: absolute;
-            top: 0px;
-            left: 0px;
+            top: 0;
+            left: 0;
             text-align: center;
         }
 
@@ -170,6 +170,31 @@
                 border: 0;
                 margin: 0;
             }
+        }
+
+        /* styles for calendar */
+        #calendar table, #calendar th, #calendar td {
+            font-size: 0.8em;
+            border: 1px solid black;
+        }
+
+        #calendar th, #calendar td {
+            vertical-align: top;
+            border: none;
+        }
+
+        #calendar th{
+            background-color: #000;
+            color: #fff;
+            text-align: left;
+        }
+
+        #calendar tr:nth-of-type(even) {
+            background-color: #F3F3F3;
+        }
+
+        #calendar tr:nth-of-type(odd) {
+            background-color:#ddd;
         }
     </style>
 </head>

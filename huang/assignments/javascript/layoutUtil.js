@@ -66,8 +66,19 @@ function createNavigationBar(isIndex) {
     var navigation = createElementWithClass("div", "navigation");
     root.appendChild(navigation);
 
-    // create main navigation
+    // add clock
     var portal = createElementWithClass("div", "portal");
+    portal.appendChild(createTimeClock());
+    navigation.appendChild(portal);
+
+    // add quotes
+    portal = createElementWithClass("div", "portal");
+    portal.innerHTML = "<h3>Quote Of the Day</h3>" +
+        "<p>" + generateQuote() + "</p>";
+    navigation.appendChild(portal);
+
+    // create main navigation
+    portal = createElementWithClass("div", "portal");
     portal.innerHTML = '<h3>Main Navigation</h3>';
 
     var baseURL;
@@ -83,13 +94,128 @@ function createNavigationBar(isIndex) {
     navigation.appendChild(portal);
 
     // create quick link
-    var portal2 = createElementWithClass("div", "portal");
-    portal2.innerHTML = '<h3>Main Navigation</h3>';
+    portal = createElementWithClass("div", "portal");
+    portal.innerHTML = '<h3>Main Navigation</h3>';
     baseURL = isIndex ? '' : '../';
-    portal2.appendChild(createListOfLinks(QUICK_NAVIGATION, baseURL, false));
-    navigation.appendChild(portal2);
+    portal.appendChild(createListOfLinks(QUICK_NAVIGATION, baseURL, false));
+    navigation.appendChild(portal);
+
+    // create calendar
+    var cal = new Calendar();
+    portal = createElementWithClass("div", "portal");
+    portal.innerHTML = cal.generateHTML();
+    navigation.appendChild(portal);
+
+    updateClockTime();
 }
 
+function createHeader(isIndex) {
+    var header = document.getElementsByClassName("page-head")[0];
+
+    // add logo
+    var logo = document.createElement("a");
+    logo.href = isIndex ? "index.html" : "../index.html";
+    var img = createElementWithClass("img", "logo1");
+    img.src = isIndex ? "./media/Wiki-wordmark.png" : "../media/Wiki-wordmark.png";
+    logo.appendChild(img);
+    header.appendChild(logo);
+
+    // add title
+    var title = document.createElement("h1");
+    title.innerText = "Pokémon Wikipedia";
+    header.appendChild(title);
+
+    // add nav bar
+    var nav = document.createElement("nav");
+    var linkBase = isIndex ? "./html/" : "./";
+    var links = [
+        linkBase + "contactus.html",
+        linkBase + "login.html",
+        linkBase + "signup.html"
+    ];
+    var names = ["Contact Us", "Log In", "Sign Up"];
+    var node = null;
+    links.forEach(function (l, index) {
+        node = document.createElement("a");
+        node.href = l;
+        node.innerHTML = "<b>" + names[index] + "</b>";
+        nav.appendChild(node);
+    });
+    header.appendChild(nav);
+}
+
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateQuote() {
+    var quotes = [
+        "\"You said you have a dream ... That dream...Make it come true! Make your wonderful dream a reality, and it will become your truth! if anyone can, it's you!\" - N",
+        "\"I see now that the circumstances of one's birth are irrelevant. It is what you do with the gift of life that determines who you are. \"\n - Mewtwo",
+        "\"A Caterpie may change into a Butterfree, but the heart that beats inside remains the same.\" \n - Brock",
+        "\"'Cause i always play to win!\" -Ash Ketchum"
+    ];
+
+    var index = getRandomIntInclusive(0, quotes.length - 1);
+    return quotes[index];
+}
+
+function popQuote() {
+    var quote = generateQuote();
+    var newWin = window.open("", "", "width=300, height=200, left=200, top=200");
+    newWin.document.write("<h2>Quote Of the Day</h2>");
+    newWin.document.write("<p>" + quote + "</p>");
+    newWin.document.body.style.backgroundColor = "#f2ffe6";
+}
+
+function generateCurrentTimeString() {
+    function normalizeTime(number) {
+        return number < 10 ? "0" + number : number;
+    }
+
+    function selectGreetingAndBackgroundColor(time) {
+        var body = document.getElementsByTagName("body")[0];
+        if (0 <= time && time < 6) {
+            body.style.backgroundColor = "#ffe6e6";
+            return "What are you doing that early?";
+        } else if (6 <= time && time < 12) {
+            body.style.backgroundColor = "#f2f2f2";
+            return "Good Morning!";
+        } else if (12 <= time && time < 18) {
+            body.style.backgroundColor = "#f2ffe6";
+            return "Good Afternoon!";
+        } else {
+            body.style.backgroundColor = "#ffffe6";
+            return "Good Evening";
+        }
+    }
+
+    var currentTime = new Date();
+    var hours = normalizeTime(currentTime.getHours());
+    var minutes = normalizeTime(currentTime.getMinutes());
+    var seconds = normalizeTime(currentTime.getSeconds());
+
+    return selectGreetingAndBackgroundColor(currentTime.getHours()) + "\n\n"
+        + [hours, minutes, seconds].join(":");
+}
+
+function createTimeClock() {
+    var node = createElementWithID("h4", "clock");
+    node.innerText = generateCurrentTimeString();
+    return node;
+}
+
+function updateClockTime() {
+    var portal = document.getElementsByClassName("portal")[0];
+    if (portal.firstElementChild) {
+        portal.replaceChild(createTimeClock(), portal.firstElementChild);
+    } else {
+        portal.appendChild(createTimeClock());
+    }
+    setTimeout('updateClockTime()', 1000);
+}
 
 // Define Pokemon object
 function Pokemon(name, img, desc) {
@@ -156,5 +282,69 @@ function addLinksToPokemonPage(parent) {
     parent.appendChild(createListOfLinks(links, '', false));
 }
 
+// create calendar
+var calDaysLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", 'Fri', 'Sat'];
+var calMonthsLabels = ['January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August', 'September',
+    'October', 'November', 'December'];
+var calDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+var calCurrentDate = new Date();
 
+function Calendar(month, year, day) {
+    this.month = month ? month : calCurrentDate.getMonth();
+    this.year = year ? year : calCurrentDate.getFullYear();
+    this.day = day ? day : calCurrentDate.getDate();
+}
+
+Calendar.prototype.generateHTML = function () {
+    // decide the first day of the week
+    var startingDay = (new Date(this.year, this.month, 1)).getDay();
+
+    // get number of days in a month
+    var monthLength = calDaysInMonth[this.month];
+    if (this.month === 1) {
+        if((this.year % 4 == 0 && this.year % 100 != 0) || this.year % 400 == 0){
+            monthLength = 29;
+        }
+    }
+
+    // create the header of the calender
+    var currentMonth = calMonthsLabels[this.month];
+    var html = ['<table id="calendar">'];
+    html.push('<tr><th colspan="7">');
+    html.push(currentMonth + "," + this.year);
+    html.push("</th></tr>");
+    html.push("<tr>");
+    var i, j;
+    for (i = 0; i < 7; i++) {
+        html.push("<td>" + calDaysLabels[i] + "</td>");
+    }
+    html.push("</tr><tr>");
+
+    var day = 1;
+    for (i = 0; i < 9; i++) {
+        for (j = 0; j < 7; j++) {
+            html.push("<td>");
+            if (day <= monthLength && (i > 0 || j >= startingDay)) {
+                if (day === this.day) {
+                    html.push('<mark>' + day + "</mark>");
+                } else {
+                    html.push(day);
+                }
+                day++;
+            }
+
+            html.push("</td>");
+        }
+
+        if (day > monthLength) {
+            break;
+        } else {
+            html.push("</tr><tr>");
+        }
+    }
+
+    html.push('</tr></table>');
+    return html.join('');
+};
 

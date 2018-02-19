@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+
+<head>
+    <title>Lab 13</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<script type="text/javascript">
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function convertToHex(num) {
+        var hex = num.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+    }
+
+    function getRandomColor() {
+        var red = getRandomIntInclusive(0, 255);
+        var green = getRandomIntInclusive(0, 255);
+        var blue = getRandomIntInclusive(0, 255);
+
+        var rgbStr = 'rgb(' +  [red, green, blue].join(',') +  ')';
+        var rgbElement = document.getElementById('rgb');
+        rgbElement.innerText = rgbStr;
+
+        var hexStr = "#" + convertToHex(red) + convertToHex(green) + convertToHex(blue);
+        var hexElement = document.getElementById("hex");
+        hexElement.innerText = "HEX: "  + hexStr;
+
+
+        var body = document.getElementsByTagName("body")[0];
+        body.style.backgroundColor = hexStr;
+        body.style.textAlign = "center";
+    }
+
+    function reload() {
+        window.location.reload(true);
+    }
+</script>
+
+<body onload="getRandomColor()">
+<div>
+    <h2>Background Color is Randomly Generated!</h2>
+    <h2 id="rgb"></h2>
+    <h2 id="hex"></h2>
+    <a href="" onclick="reload()">Click Here to Random</a>
+</div>
+</body>
+
+</html>

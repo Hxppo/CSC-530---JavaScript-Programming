@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lab 14</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            background-color: #89D7FB;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<script type="text/javascript">
+    function display() {
+        var mon = prompt("What month were you born?", "8");
+        var day = prompt("What day were you born?", "21");
+        var year = prompt("What year were you born?", "1989");
+        var bday = new Date(Date.parse([year, mon, day].join(',')));
+
+        var root = document.getElementById("container");
+        // display current time
+        var currentTime = new Date();
+        var currentTimeNode = document.createElement("h2");
+        currentTimeNode.innerText = "Today is " + currentTime.toUTCString();
+        root.appendChild(currentTimeNode);
+
+        // display birthday
+        var bdayNode = document.createElement("h2");
+        bdayNode.innerText = "I was born on " + bday.toLocaleDateString();
+        root.appendChild(bdayNode);
+
+        // compute my next birthday
+        var nextBday = new Date(new Date(bday.getTime()).setFullYear(currentTime.getFullYear()));
+        if (currentTime > nextBday) {
+            nextBday = nextBday.setFullYear(nextBday.getFullYear() + 1);
+        }
+
+        // display interval1
+        var intervalNode1 = document.createElement("h2");
+        intervalNode1.innerText = computeInterval(nextBday, currentTime) + " until next birthday";
+        root.appendChild(intervalNode1);
+
+        // display interval2
+        var intervalNode2 = document.createElement("h2");
+        intervalNode2.innerText = "I have been alive for " + computeInterval(currentTime, bday);
+        root.appendChild(intervalNode2);
+    }
+
+    function computeInterval(date1, date2) {
+        var msecPerMinute = 1000 * 60;
+        var msecPerHour = msecPerMinute * 60;
+        var msecPerDay = msecPerHour * 24;
+
+        var interval = date1.getTime() - date2.getTime();
+        var days = Math.floor(interval / msecPerDay );
+        interval = interval - (days * msecPerDay );
+
+        // Calculate the hours, minutes, and seconds.
+        var hours = Math.floor(interval / msecPerHour );
+        interval = interval - (hours * msecPerHour );
+
+        var minutes = Math.floor(interval / msecPerMinute );
+        interval = interval - (minutes * msecPerMinute );
+
+        var seconds = Math.floor(interval / 1000 );
+        return days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+    }
+</script>
+
+<body onload="display()">
+<div id="container">
+    <h2>My Age</h2>
+</div>
+</body>
+
+</html>

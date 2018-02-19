@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+
+<head>
+    <title>Lab 12</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            background-color: #76DCFA;
+        }
+    </style>
+</head>
+
+<script type="text/javascript">
+    var reg1 = /[a-zA-Z_0-9]/g;
+    var reg2 = /[^0-9]/g;
+    var reg3 = /[A-Z][a-z]+\s{1}/g;
+    var reg4 = /\#\d{5}\.\d/g;
+
+    function testString() {
+        var body = document.body;
+        var nodeTest, nodeRes, nodeText, text;
+        do {
+            text = prompt("Enter a text(stop to exit)", "stop");
+
+            nodeText = document.createElement("h2");
+            nodeText.innerText = "The text is: " + text;
+            body.appendChild(nodeText);
+
+            // 1st regular expression
+            nodeTest = document.createElement("p");
+            nodeTest.innerText = "Match a string that contains at least one character in A-Z, a-z, 0-9 and _";
+            body.appendChild(nodeTest);
+            nodeRes = document.createElement("p");
+            nodeRes.innerText = reg1.test(text) ? "It is a match" : "No match";
+            body.appendChild(nodeRes);
+
+            // 2nd
+            nodeTest = document.createElement("p");
+            nodeTest.innerText = "Match a string that does not contain a number between 0 and 9";
+            body.appendChild(nodeTest);
+            nodeRes = document.createElement("p");
+            nodeRes.innerText = reg2.test(text) ? "It is a match" : "No match";
+            body.appendChild(nodeRes);
+
+            // 3rd
+            nodeTest = document.createElement("p");
+            nodeTest.innerText = "Search for an uppercase letter, followed by one or more lowercase letters, followed by a space.";
+            body.appendChild(nodeTest);
+            nodeRes = document.createElement("p");
+            nodeRes.innerText = reg3.test(text) ? "It is a match" : "No match";
+            body.appendChild(nodeRes);
+
+            // 4th
+            nodeTest = document.createElement("p");
+            nodeTest.innerText = "Find a # sign, followed by excatly 5 repeating digits, a period, and another digit";
+            body.appendChild(nodeTest);
+            nodeRes = document.createElement("p");
+            nodeRes.innerText = reg4.test(text) ? "It is a match" : "No match";
+            body.appendChild(nodeRes);
+
+        } while (text !== "stop")
+    }
+
+
+</script>
+
+<body onload="testString()">
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lab 15</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            background-color: #89D7FB;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<script type="text/javascript">
+    function Website(name, url) {
+        this.name = name;
+        this.url = url;
+    }
+
+    var webNames = [
+        "ABC",
+        "CNN",
+        "NBC",
+        "FOX",
+        "VOX"
+    ];
+
+    var webUrls = [
+        "http://abc.go.com/",
+        "https://www.cnn.com/",
+        "https://www.nbcnews.com/",
+        "http://www.foxnews.com/",
+        "https://www.vox.com/"
+    ];
+
+    var websites = webNames.map(function (v, index) {
+        return new Website(v, webUrls[index]);
+    });
+    
+    function pickWebsite() {
+        var date = new Date();
+        var min = date.getMinutes();
+        var index = min % websites.length;
+        var web = websites[index];
+
+        var root = document.getElementById("container");
+        var node = document.createElement("a");
+        node.href = web.url;
+        node.innerText = web.name;
+
+        if (root.firstElementChild) {
+            root.replaceChild(node, root.firstElementChild);
+        } else {
+            root.appendChild(node);
+        }
+
+        setTimeout("pickWebsite()", 1000 * 60);
+    }
+</script>
+
+<body onload="pickWebsite()">
+<h2>Click on the link to see a website</h2>
+<div id="container"></div>
+</body>
+
+</html>

@@ -79,16 +79,8 @@ nav a:hover {
 }
 
 /* navigation bar */
-.navigation {
-    width: 100%;
-    max-width: 200px;
-    margin: 0;
-    padding: 0;
-    float: left;
-    border-top: none;
-}
 
-.portal {
+ .portal {
     width: 100%;
     padding: 15px;
     background: url(../media/nav-border.png) no-repeat top left;
@@ -203,3 +195,28 @@ footer p {
         margin: 0;
     }
 }
+
+ /* styles for calendar */
+ #calendar table, #calendar th, #calendar td {
+     font-size: 0.8em;
+     border: 1px solid black;
+ }
+
+ #calendar th, #calendar td {
+     vertical-align: top;
+     border: none;
+ }
+
+ #calendar th{
+     background-color: #000;
+     color: #fff;
+     text-align: left;
+ }
+
+ #calendar tr:nth-of-type(even) {
+     background-color: #F3F3F3;
+ }
+
+ #calendar tr:nth-of-type(odd) {
+     background-color:#ddd;
+ }
