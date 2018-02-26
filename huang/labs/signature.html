@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+
+<head>
+    <title>Signature Assignment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            max-width: 800px;
+            margin: auto;
+            background-color: #E0E5E5;
+        }
+
+        header {
+            color: black;
+            text-align: center;
+            background: lightgreen;
+            border: 1px solid black;
+            margin-bottom: 5px;
+        }
+
+        #container {
+            border: thick solid black;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            height: 600px;
+            background-color: #339966;
+            margin: auto;
+            padding-top: 100px;
+        }
+
+        #input {
+            width: 320px;
+            margin: 20px auto;
+        }
+
+        h2 {
+            text-align: left;
+        }
+
+        h3 {
+            text-align: left;
+        }
+    </style>
+    <script type="text/javascript" src="signature.js"></script>
+</head>
+
+<body onload="init()">
+<div id="container">
+<h1>My Message</h1>
+    <div id="input">
+        <form name="myForm">
+            <textarea name="input" cols="50" rows="20"></textarea>
+        </form>
+        <h2></h2>
+        <h3></h3>
+    </div>
+</div>
+
+</body>
+
+</html>

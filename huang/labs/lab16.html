@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+
+<head>
+    <title>Lab 16</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            background-color: #89D7FB;
+            text-align: center;
+        }
+
+        table {
+            border: thick solid black;
+        }
+
+        input[type="button"] {
+            width: 100px;
+        }
+
+        input[type="text"] {
+            width: 400px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<h1>My Calculator</h1>
+
+<form name="lab">
+    <table>
+        <tr>
+            <td>
+                <input type="text" name="display" value="" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" name="one" value="1" onclick="lab.display.value += 1">
+                <input type="button" name="two" value="2" onclick="lab.display.value += 2">
+                <input type="button" name="three" value="3" onclick="lab.display.value += 3">
+                <input type="button" name="add" value="+" onclick="lab.display.value += '+'">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="button" name="four" value="4" onclick="lab.display.value += 4">
+                <input type="button" name="five" value="5" onclick="lab.display.value += 5">
+                <input type="button" name="six" value="6" onclick="lab.display.value += 6">
+                <input type="button" name="minus" value="-" onclick="lab.display.value += '-'">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="button" name="seven" value="7" onclick="lab.display.value += 7">
+                <input type="button" name="eight" value="8" onclick="lab.display.value += 8">
+                <input type="button" name="nine" value="9" onclick="lab.display.value += 9">
+                <input type="button" name="multiply" value="*" onclick="lab.display.value += '*'">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="button" name="clear" value="C" onclick="lab.display.value =''">
+                <input type="button" name="zero" value="0" onclick="lab.display.value += 0">
+                <input type="button" name="equal" value="=" onclick="lab.display.value = eval(lab.display.value)">
+                <input type="button" name="div" value="/" onclick="lab.display.value += '/'">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+
+</html>

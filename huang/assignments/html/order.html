@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+
+<head>
+    <title>Pokemon Wiki</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="../javascript/layoutUtil.js"></script>
+    <link rel="stylesheet" href="../css/order.css">
+</head>
+
+<body onload="initOrderPage()">
+<header class="page-head">
+    <script type="text/javascript">
+        createHeader(false);
+    </script>
+</header>
+
+<div class="container">
+    <script type="text/javascript">
+        createNavigationBar(false);
+    </script>
+
+    <div class="content">
+        <form name="newForm">
+            <h2>Enter Your Orders Here</h2>
+            <fieldset id="order-table">
+                <table id="order">
+                    <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Unit Price (USD)</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">Pokemon Movie</td>
+                            <td>超夢的逆襲</td>
+                            <td class="price">15</td>
+                            <td><input type="number" min="0" class="quantity"></td>
+                            <td><input type="text" class="productTotal" disabled></td>
+                        </tr>
+                        <tr>
+                            <td>幻之寶可夢 洛奇亞爆誕</td>
+                            <td class="price">20</td>
+                            <td><input type="number" min="0" class="quantity"></td>
+                            <td><input type="text" class="productTotal" disabled></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Subtotal $</td>
+                            <td><input type="text" class="categorySubtotal" disabled></td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2">Pokemon Games</td>
+                            <td>Pokemon X</td>
+                            <td class="price">40</td>
+                            <td><input type="number" min="0" class="quantity"></td>
+                            <td><input type="text" class="productTotal" disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Pokemon Y</td>
+                            <td class="price">40</td>
+                            <td><input type="number" min="0" class="quantity"></td>
+                            <td><input type="text" class="productTotal" disabled></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Subtotal $</td>
+                            <td><input type="text" class="categorySubtotal" disabled></td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2">Pokemon Toys</td>
+                            <td>Pikachu Model</td>
+                            <td class="price">12</td>
+                            <td><input type="number" min="0" class="quantity"></td>
+                            <td><input type="text" class="productTotal" disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Bulbasaur Model</td>
+                            <td class="price">11</td>
+                            <td><input type="number" min="0" class="quantity"></td>
+                            <td><input type="text" class="productTotal" disabled></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Subtotal $</td>
+                            <td><input type="text" class="categorySubtotal" disabled></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="4">Before Tax Total $</td>
+                            <td><input type="text" id="beforeTaxTotal" disabled></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Sales Tax(8.25%) $</td>
+                            <td><input type="text" id="salesTax" disabled></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">After Tax Total $</td>
+                            <td><input type="text" id="afterTaxTotal" disabled></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Shipping and Handling $</td>
+                            <td><input type="number" id="shipping" value="10" disabled></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Grand Total $</td>
+                            <td><input type="text" id="total" disabled></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </fieldset>
+
+            <h2>Personal Information</h2>
+            <fieldset id="personal-info">
+                <label class="required">
+                    <p>Name</p>
+                    <input type="text" name="first" placeholder="First Name" required>
+                    <input type="text" name="last" placeholder="Last Name" required>
+                </label>
+                <label class="required">
+                    <p>Street</p>
+                    <input type="text" name="address" required>
+                </label>
+                <label class="required">
+                    <p>City</p>
+                    <input type="text" name="city" required>
+                    <p>State</p>
+                    <input type="text" name="state" required>
+                    <p>Zip Code</p>
+                    <input type="text" name="zip" minlength="5" max="9" required>
+                </label>
+
+                <label class="required">
+                    <p>Phone Number</p>
+                    <input type="tel" name="phone" minlength="12" maxlength="12" size="20"
+                           placeholder="pattern: xxx-xxx-xxxx" required>
+                </label>
+                <label class="required">
+                    <p>Email</p>
+                    <input type="email" name="email" size="40" placeholder="default@example.com"
+                           pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
+                </label>
+                <label class="required" style="display: none;">
+                    <p>My Email</p>
+                    <input type="email" name="myemail" value="huangxin1657@students.itu.edu">
+                </label>
+                <label class="required">
+                    <p>Credit Card Number</p>
+                    <input type="text" name="ccnum" minlength="16" maxlength="16" required>
+                </label>
+                <label class="required">
+                    <p>Credit Car  Type</p>
+                    <select name="cctype" required>
+                        <option value="Discover" selected>Discover</option>
+                        <option value="Visa">Visa</option>
+                        <option value="Mastercard">Master Card</option>
+                        <option value="Amex">American Express</option>
+                    </select>
+                </label>
+                <label class="required">
+                    <p>Credit Card Expiration Date</p>
+                    <input type="text" name="ccexpire" placeholder="mm/yyyy"
+                           pattern="^(0[1-9]|1[0-2])\/([0-9]{4})$" required>
+                </label>
+                <p>Comments</p>
+                <label class="required">
+                    <textarea name="comment" cols="100" rows="10"></textarea>
+                </label>
+            </fieldset>
+
+            <fieldset class="submitbutton">
+                <input type="submit" id="submit" value="Submit Order">
+            </fieldset>
+        </form>
+    </div>
+</div>
+<footer>
+    <p>
+        <b>Posted by: </b>Xin Huang</p>
+    <p>
+        <b>Contact information: </b>
+        <a href="mailto:huangxin1657@students.itu.edu">huangxin1657@students.itu.edu</a>
+    </p>
+</footer>
+
+</body>
+
+
+</html>

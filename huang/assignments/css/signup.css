@@ -79,8 +79,16 @@ nav a:hover {
 }
 
 /* navigation bar */
+.navigation {
+ width: 100%;
+ max-width: 200px;
+ margin: 0;
+ padding: 0;
+ float: left;
+ border-top: none;
+}
 
- .portal {
+.portal {
     width: 100%;
     padding: 15px;
     background: url(../media/nav-border.png) no-repeat top left;

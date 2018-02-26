@@ -13,7 +13,8 @@ var MAIN_NAVIGATION = [
     createLinkObject("Pokemon Movies", "movies.html"),
     createLinkObject("Pokemon Games", "games.html"),
     createLinkObject("Favorite Pokemons", "pokemons.html"),
-    createLinkObject("What's New", "whatsnew.html")
+    createLinkObject("What's New", "whatsnew.html"),
+    createLinkObject("Orders", "order.html")
 ];
 
 var QUICK_NAVIGATION = [
@@ -74,7 +75,7 @@ function createNavigationBar(isIndex) {
     // add quotes
     portal = createElementWithClass("div", "portal");
     portal.innerHTML = "<h3>Quote Of the Day</h3>" +
-        "<p>" + generateQuote() + "</p>";
+        "<div>" + generateQuote() + "</div>";
     navigation.appendChild(portal);
 
     // create main navigation
@@ -155,19 +156,11 @@ function generateQuote() {
         "\"You said you have a dream ... That dream...Make it come true! Make your wonderful dream a reality, and it will become your truth! if anyone can, it's you!\" - N",
         "\"I see now that the circumstances of one's birth are irrelevant. It is what you do with the gift of life that determines who you are. \"\n - Mewtwo",
         "\"A Caterpie may change into a Butterfree, but the heart that beats inside remains the same.\" \n - Brock",
-        "\"'Cause i always play to win!\" -Ash Ketchum"
+        "\"'Cause i always play to win!\" \n -Ash Ketchum"
     ];
 
     var index = getRandomIntInclusive(0, quotes.length - 1);
     return quotes[index];
-}
-
-function popQuote() {
-    var quote = generateQuote();
-    var newWin = window.open("", "", "width=300, height=200, left=200, top=200");
-    newWin.document.write("<h2>Quote Of the Day</h2>");
-    newWin.document.write("<p>" + quote + "</p>");
-    newWin.document.body.style.backgroundColor = "#f2ffe6";
 }
 
 function generateCurrentTimeString() {
@@ -303,7 +296,7 @@ Calendar.prototype.generateHTML = function () {
     // get number of days in a month
     var monthLength = calDaysInMonth[this.month];
     if (this.month === 1) {
-        if((this.year % 4 == 0 && this.year % 100 != 0) || this.year % 400 == 0){
+        if((this.year % 4 === 0 && this.year % 100 !== 0) || this.year % 400 === 0){
             monthLength = 29;
         }
     }
@@ -348,3 +341,283 @@ Calendar.prototype.generateHTML = function () {
     return html.join('');
 };
 
+function validateField(node, validateFunction) {
+    if (!validateFunction(node)) {
+        if (!node.value || node.value.length === 0) {
+            alert("This Field is Required!");
+        } else {
+            alert("Tis Field doesn't match with the requirement!")
+        }
+        node.focus();
+        node.style.backgroundColor = "#ffe6ee";
+        return false;
+    }
+
+    node.style.backgroundColor = "#ccffdd";
+    return true;
+}
+
+function validateFieldText(node) {
+    if (!node.value) {
+        return false;
+    } else if (node.value.length === 0) {
+        return false;
+    } else {
+        // value cannot be blank
+        var reg = /\S/g;
+        if (!reg.test(node.value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// only letters are allowed
+function validateFieldTextStringOnly(node) {
+    if (!node.value) {
+        return false;
+    } else if (node.value.length === 0) {
+        return false;
+    } else {
+        //
+        var reg = /^[a-zA-Z]+$/g;
+        if (!reg.test(node.value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// only letters and spaces allowed
+function validateFieldTextStringAndSpace(node) {
+    if (!node.value) {
+        return false;
+    } else if (node.value.length === 0) {
+        return false;
+    } else {
+        //
+        var reg = /^[a-zA-Z\s]*$/;
+        if (!reg.test(node.value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// only numbers are allowed
+function validateZip(node) {
+    if (!node.value) {
+        return false;
+    } else if (node.value.length !== 5 && node.value.length !== 9) {
+        return false;
+    } else {
+        // only numbers are allowed
+        var reg = /\D/;
+        if (reg.test(node.value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function validatePhone(node) {
+    // nonzero length
+    if (!node.value) {
+        return false;
+    } else {
+        // pattern check
+        var reg = /[0-9]{3}-[0-9]{3}-[0-9]{4}/g;
+        if (!reg.test(node.value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function validateEmail(node) {
+    if (!node.value) {
+        return false;
+    } else {
+        var reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (!reg.test(node.value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function validateCCNumber(node) {
+    if (!node.value) {
+        return false;
+    } else if (node.value.length !== 16) {
+        return false;
+    } else {
+        // only numbers are allowed
+        var reg = /\D/;
+        if (reg.test(node.value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function validateCCExpire(node) {
+    if (!node.value) {
+        return false;
+    } else if (node.value.length !== 7) {
+        return false;
+    } else {
+        // check pattern
+        var reg = /^(0[1-9]|1[0-2])\/([0-9]{4})$/;
+        if (!reg.test(node.value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function validateForm() {
+    var form = document.newForm;
+    // validate names
+    if (!validateField(form.first, validateFieldText)) return false;
+    if (!validateField(form.last, validateFieldText)) return false;
+
+    // validate street, city, state
+    if (!validateField(form.address, validateFieldText)) return false;
+    if (!validateField(form.city, validateFieldTextStringAndSpace)) return false;
+    if (!validateField(form.state, validateFieldTextStringOnly)) return false;
+
+    // validate zip
+    if (!validateField(form.zip, validateZip)) return false;
+
+    // validate phone
+    if (!validateField(form.phone, validatePhone)) return false;
+
+    // validate email
+    if (!validateField(form.email, validateEmail)) return false;
+
+    // validate credit card number
+    if (!validateField(form.ccnum, validateCCNumber)) return false;
+
+    //valid expiration date
+    return validateField(form.ccexpire, validateCCExpire);
+}
+
+function getCharCode(event) {
+    if (typeof event.charCode === "number") {
+        return event.charCode;
+    } else {
+        return event.keyCode;
+    }
+}
+
+function numbersOnly(event) {
+    var charCode = getCharCode(event);
+    var reg = /\d/;
+
+    if (!reg.test(String.fromCharCode(charCode)) && charCode > 9 && !event.ctrlKey) {
+        event.preventDefault();
+    }
+}
+
+
+function initOrderPage() {
+    // set action and method of the form
+    document.newForm.action = "http://voyager.deanza.edu/~hso/cgi-bin/form420.cgi";
+    document.newForm.method = "post";
+    document.newForm.target = "_blank";
+
+    testOrder();
+
+    // init the order table
+    var orderTable = document.getElementById("order");
+    // add event listener for quantity column
+    var quantityCol = Array.from(orderTable.getElementsByClassName("quantity"));
+    var priceCol = Array.from(orderTable.getElementsByClassName("price"));
+
+    quantityCol.forEach(function (c) {
+        c.addEventListener("change", function () {
+            // update product total
+            var costs = [];
+            for (var i = 0; i < quantityCol.length; i++) {
+                if (priceCol[i].innerText && quantityCol[i].value) {
+                    costs[i] = parseInt(priceCol[i].innerText) * parseInt(quantityCol[i].value);
+                } else {
+                    costs[i] = "";
+                }
+            }
+
+            var lastSubTotal, productTotal, j = 0;
+            var categorySubtotals = document.getElementsByClassName("categorySubtotal");
+            var beforeTaxTotal = null;
+            costs.forEach(function (value, index) {
+                if (index % 2 === 0) {
+                    lastSubTotal = value;
+                } else {
+                    categorySubtotals[j].value = lastSubTotal + value;
+                    j++;
+                }
+
+                productTotal = quantityCol[index].value ? value : null;
+                document.getElementsByClassName("productTotal")[index].value = productTotal;
+                beforeTaxTotal += productTotal;
+            });
+
+            var taxRate = 0.0825;
+            beforeTaxTotal = parseInt(beforeTaxTotal);
+            document.getElementById("beforeTaxTotal").value = beforeTaxTotal;
+            document.getElementById("salesTax").value = (beforeTaxTotal * taxRate).toFixed(2);
+            document.getElementById("afterTaxTotal").value = (beforeTaxTotal + beforeTaxTotal * taxRate).toFixed(2);
+
+            var shipping = parseInt(document.getElementById("shipping").value);
+            if (beforeTaxTotal === 0) {
+                document.getElementById("total").value = 0;
+            } else {
+                document.getElementById("total").value = (shipping + beforeTaxTotal + beforeTaxTotal * taxRate).toFixed(2);
+            }
+        });
+    });
+
+    // init the personal info
+    // enforce numeric only for zip code
+    document.newForm.zip.addEventListener("keypress", function (event) {
+        numbersOnly(event);
+    });
+
+    document.newForm.addEventListener("submit", function (event) {
+        if (!validateForm()) {
+            event.preventDefault();
+        }
+    });
+}
+
+
+function testOrder() {
+    var form = document.newForm;
+
+    form.first.value = "XIN";
+    form.last.value = "HUANG";
+
+    form.address.value = "100 Buckingham Dr";
+    form.city.value = "Palo Alto";
+    form.state.value = "CA";
+    form.zip.value = "95051";
+
+    form.phone.value = "111-111-1111";
+    form.email.value = "huangxin1657@students.itu.edu";
+
+    form.ccnum.value = "1111111111111111";
+    form.cctype.value = "Visa";
+    form.ccexpire.value = "11/2019";
+
+    form.comment.value = "Nothing to Say";
+    // form.comment.value = "";
+}

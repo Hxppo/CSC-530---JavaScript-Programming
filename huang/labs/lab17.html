@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lab 17</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            background-color: #89D7FB;
+            text-align: center;
+        }
+    </style>
+
+    <script type="text/javascript">
+        // create cookie util
+        var CookieUtil = function() {
+            function unsetCookie(name, path, domain, secure) {
+                setCookie(name, "", new Date(0), path, domain, secure);
+            }
+
+            function getCookie(key) {
+                var cookies = document.cookie;
+                var cookieName = encodeURIComponent(key);
+                var cookieStart = cookies.indexOf(cookieName);
+
+                if (cookieStart > -1) {
+                    var cookieEnd = cookies.indexOf(";", cookieStart);
+                    if (cookieEnd === -1) {
+                        cookieEnd = cookies.length;
+                    }
+
+                    return decodeURIComponent(cookies.substring(cookieStart + cookieName.length + 1, cookieEnd));
+                } else {
+                    return null;
+                }
+            }
+
+            function setCookie(name, value, expireDate, path, domain, secure) {
+                // encoding the key value pair
+                var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+                if (expireDate instanceof Date) {
+                    cookieText += "; expires=" + expireDate.toUTCString();
+                } else {
+                    var defaultDate = new Date();
+                    defaultDate.setTime(defaultDate.getTime() + (24 * 60 * 60 * 1000));
+                    cookieText += "; expires=" + defaultDate.toUTCString();
+                }
+
+                if (path) {
+                    cookieText += "; path=" + path;
+                }
+
+                if (domain) {
+                    cookieText += "; domain=" + domain;
+                }
+
+                if (secure) {
+                    cookieText += "; secure";
+                }
+                document.cookie = cookieText;
+            }
+
+            return {
+                unsetCookie: unsetCookie,
+                getCookie: getCookie,
+                setCookie: setCookie
+            };
+        };
+
+
+        function createTitle(isReplace) {
+            var quotes = [
+                "Hello World!",
+                "Learn JavaScript",
+                "This is lab 17",
+                "What's up!",
+                "Good to see you again!",
+                "What a lovely day!",
+                "Do you have any questions?",
+                "Tell me your favoriate movie.",
+                "Welcome back",
+                "Good Bye!"
+            ];
+
+            var util = new CookieUtil();
+            var counter = Number(util.getCookie("counter"));
+            if (counter) {
+                ++counter;
+            } else {
+                counter = 1;
+            }
+
+            // set the new cookie
+            util.setCookie("counter", counter.toString());
+
+            var index = (counter - 1) % quotes.length;
+            var node = document.createElement("h1");
+            node.innerText = "You have visited this page " + counter + " time(s). \n" + quotes[index];
+            var div = document.getElementsByTagName("div")[0];
+            if (isReplace) {
+                div.replaceChild(node, div.firstElementChild);
+            } else {
+                div.appendChild(node);
+            }
+        }
+
+        function resetCounter() {
+            var util = new CookieUtil();
+            util.unsetCookie("counter");
+            createTitle(true);
+        }
+    </script>
+</head>
+
+<body onload="createTitle(false)">
+<div></div>
+<input type="button" value="Revisit Page" onclick="location.reload()">
+<input type="button" value="Reset Counter" onclick="resetCounter()">
+
+</body>
+
+</html>

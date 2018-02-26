@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lab 19</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            max-width: 800px;
+            margin: auto;
+            background-color: #339966;
+        }
+
+        header {
+            color: black;
+            text-align: center;
+            background: lightgreen;
+            border: 1px solid black;
+            margin-bottom: 5px;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+        iframe {
+            margin-top: 30px;
+            width: 800px;
+            height: 700px;
+            alignment: center;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function createObject(text, url) {
+            return {
+                "text": text,
+                "url": url
+            };
+        }
+        var pokemonGrass = [
+            createObject("Venusaur", "./media/Venusaur.png"),
+            createObject("Exeggutor", "./media/Exeggutor.png"),
+            createObject("Serperior", "./media/Serperior.png")
+        ];
+        var pokemonWater = [
+            createObject("Suicune", "./media/Suicune.png"),
+            createObject("Greninja", "./media/Greninja.png"),
+            createObject("Tapu Fini", "./media/Tapu_Fini.png")
+        ];
+
+        function changeType() {
+            var typeNode = document.myForm.type;
+            var nameNode = document.myForm.name;
+
+            // delete existing node
+            while (nameNode.children.length >= 2) {
+                nameNode.removeChild(nameNode.lastChild);
+            }
+
+            // add new node
+            var type = typeNode.value;
+            if (type !== "Pokemon Type") {
+                var pokemon = (type === "water") ? pokemonWater : pokemonGrass;
+                var rootNode;
+
+                // create options
+                rootNode = document.getElementsByName("name")[0];
+                if (rootNode.childElementCount < 1 + pokemon.length) {
+                    var childNode = null;
+                    pokemon.forEach(function (p, index) {
+                        if (index === 0) {
+                            childNode = new Option(p.text, index.toString(), true, true);
+                            document.getElementById('content').setAttribute('src', p.url);
+                        } else {
+                            childNode = new Option(p.text, index.toString(), false, false);
+                        }
+                        rootNode.appendChild(childNode);
+                    });
+                }
+            } else {
+                // clean up the picture
+                document.getElementById('content').setAttribute('src', "");
+            }
+        }
+        function changePokemon() {
+            var type = document.myForm.type.value;
+            var name = document.myForm.name.value;
+
+            var pokemon = (type === "water") ? pokemonWater : pokemonGrass;
+            document.getElementById('content').setAttribute('src', pokemon[name].url);
+        }
+
+        function init() {
+            document.myForm.type.onchange = changeType;
+            document.myForm.name.onchange = changePokemon;
+        }
+    </script>
+</head>
+
+<body onload="init()">
+<form name="myForm">
+    <select name="type">
+        <option>Pokemon Type</option>
+        <option value="water">Water Type</option>
+        <option value="grass">Grass Type</option>
+    </select>
+    <select name="name">
+        <option disabled>Pokemon Name</option>
+    </select>
+</form>
+
+<iframe src ="" id="content" seamless>
+</iframe>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>finals</title>
+    <style>
+        body {
+            background: url("apple-store-queens-center-mall.png") no-repeat;
+            margin: auto;
+            background-size: cover;
+        }
+
+        #clock {
+            text-align: center;
+            color: darkgreen;
+        }
+
+        #flower {
+            width: 400px;
+            height: 50px;
+            margin: auto;
+        }
+
+        #sale_container {
+            text-align: center;
+            width: 200px;
+            margin: 30px auto;
+        }
+
+        #products {
+            width: 200px;
+            height: 200px;
+            margin: 140px auto;
+            pointer-events: auto;
+        }
+
+        #product_img {
+            width: 90%;
+        }
+
+        #product_tool {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+        }
+    </style>
+
+    <script type="text/javascript" src="finals.js"></script>
+</head>
+<body onload="init()">
+    <div id="clock">
+        <script type="text/javascript">
+            generateCountdownClock();
+        </script>
+    </div>
+
+    <div id="flower"></div>
+    <div id="sale_container"><h1 id="sale"></h1></div>
+    <div id="products">
+        <img id="product_img" src="" style="display: none;">
+        <div id="product_title"></div>
+        <div id="product_tool"></div>
+    </div>
+</body>
+</html>

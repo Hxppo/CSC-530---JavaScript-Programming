@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lab 18</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            max-width: 800px;
+            margin: auto;
+            background-color: #339966;
+        }
+
+        header {
+            color: black;
+            text-align: center;
+            background: lightgreen;
+            border: 1px solid black;
+            margin-bottom: 5px;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 900px;
+            margin-top: 100px;
+        }
+
+        #left-container {
+            background-color: linen;
+            float: left;
+            padding: 10px;
+            width: 300px;
+        }
+
+        #right-container {
+            color: maroon;
+            float: right;
+            width: 500px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        h3 {
+            margin: 20px;
+        }
+
+        h2 {
+            margin: 20px;
+            color: #B72A6C;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function createImage(text, url) {
+            return {
+                "text": text,
+                "url": url
+            };
+        }
+        
+        function display(text, url) {
+            var node = document.getElementsByTagName("img")[0];
+            node.src = url;
+
+            node = document.getElementById("desc");
+            node.innerText = text;
+        }
+
+        var images = [];
+        images.push(createImage("",
+            "https://www.portland5.com/sites/default/files/styles/carousel-large/public/carousel/NatGeoLive-Logo-780x400.jpg?itok=5wXIsxdj"));
+        images.push(createImage("Biggest Lake is drying.",
+            "https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2018/03/lakes/drying-lakes-drought-water-climate-change-9.adapt.1900.1.jpg"));
+        images.push(createImage("Birds in Suburbs.",
+            "https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2018/02/DEPARTMENTS/BasicInstincts/basic-instinct-wilsons-warbler.adapt.1190.1.jpg"));
+        images.push(createImage("MICROBES",
+            "https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2018/03/brief-history-of-life/brief-history-of-life-canadia-spinosa-annelida-cambrian-burgess-shale-fossil-crop.adapt.1900.1.jpg"));
+
+        function init() {
+            var img = images[0];
+            display(img.text, img.url);
+
+            var nodes = document.getElementsByTagName("h3");
+            var nodesList = Array.prototype.slice.call(nodes);
+            nodesList.forEach(function (e, index) {
+                e.addEventListener("mouseout", function() {
+                    display(img.text, img.url);
+                    document.getElementsByTagName("h3")[index].style.color = "#000000";
+                });
+                e.addEventListener("mouseover", function() {
+                    display(images[index + 1].text, images[index + 1].url);
+                    document.getElementsByTagName("h3")[index].style.color = "#0055ff";
+                });
+            });
+        }
+    </script>
+</head>
+
+<body onload="init()">
+<div id="container">
+    <div id="left-container">
+        <h3 id="1">Picture One</h3>
+        <h3 id="2">Picture Two</h3>
+        <h3 id="3">Picture Three</h3>
+
+        <h2 id="desc"></h2>
+    </div>
+
+    <div id="right-container">
+        <img src="">
+    </div>
+</div>
+
+</body>
+
+</html>
